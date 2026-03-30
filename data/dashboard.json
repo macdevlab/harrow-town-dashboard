@@ -1,0 +1,39 @@
+{
+  "updated": "2026-03-30T18:48:36.252792",
+  "season": 2026,
+  "matchweek": 1,
+  "matchweek_date": "28/03/2026",
+  "weekly_performances": [],
+  "leaderboards": {
+    "batting": [],
+    "bowling": [],
+    "fielding": [],
+    "overall": []
+  },
+  "points_system": {
+    "per_run": 1,
+    "per_four": 1,
+    "per_six": 2,
+    "milestone_25": 5,
+    "milestone_50": 10,
+    "milestone_100": 25,
+    "not_out": 5,
+    "duck": -3,
+    "sr_150_bonus": 10,
+    "sr_100_bonus": 5,
+    "sr_50_penalty": -5,
+    "sr_min_balls": 10,
+    "per_wicket": 20,
+    "haul_3w": 5,
+    "haul_5w": 20,
+    "per_maiden": 3,
+    "economy_lt4": 15,
+    "economy_lt5": 10,
+    "economy_lt6": 5,
+    "economy_gte10": -5,
+    "econ_min_overs": 4,
+    "catch": 10,
+    "run_out": 10,
+    "stumping": 12
+  }
+}
