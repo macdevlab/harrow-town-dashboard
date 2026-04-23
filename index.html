@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harrow Town CC — Season Dashboard</title>
-<meta name="description" content="Live performance dashboard for Harrow Town Cricket Club senior men's teams. Updated weekly with POTM points, leaderboards and stats.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -31,31 +30,29 @@
     --text-muted: #5a5548;
     --border: rgba(201,168,76,0.10);
     --border-hover: rgba(201,168,76,0.25);
-    --radius: 6px;
     --radius-lg: 10px;
     --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --slide-duration: 6000;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--navy);
-    color: var(--text-primary);
+    background: var(--navy); color: var(--text-primary);
     font-family: 'DM Sans', system-ui, sans-serif;
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
+    min-height: 100vh; -webkit-font-smoothing: antialiased;
   }
   body::before {
-    content: '';
-    position: fixed; inset: 0;
+    content: ''; position: fixed; inset: 0;
     background:
       radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,168,76,0.04), transparent 50%),
       radial-gradient(ellipse 60% 50% at 80% 90%, rgba(74,157,232,0.03), transparent 50%);
     pointer-events: none; z-index: 0;
   }
+
+  /* ═══ HEADER ═══ */
   .header {
     position: relative;
     background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
-    border-bottom: 1px solid var(--border);
-    overflow: hidden;
+    border-bottom: 1px solid var(--border); overflow: hidden;
   }
   .header::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
@@ -69,11 +66,14 @@
   .club-identity { display: flex; align-items: center; gap: 1.1rem; }
   .club-crest {
     width: 54px; height: 54px;
-    background: linear-gradient(135deg, var(--gold-bright), var(--gold-dim));
-    border-radius: 50%; display: grid; place-items: center;
-    font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
-    color: var(--navy); letter-spacing: 1px;
-    box-shadow: 0 0 20px rgba(201,168,76,0.2); flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(201,168,76,0.2);
+  }
+  .club-crest img {
+    width: 100%; height: 100%;
+    object-fit: cover;
   }
   .club-text .club-name {
     font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem;
@@ -81,8 +81,7 @@
   }
   .club-text .club-sub {
     font-size: 0.72rem; color: var(--text-secondary);
-    letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 500; margin-top: 0.15rem;
+    letter-spacing: 3px; text-transform: uppercase; font-weight: 500; margin-top: 0.15rem;
   }
   .header-right { text-align: right; }
   .header-right .season-badge {
@@ -99,14 +98,15 @@
   }
   .data-status.live { background: var(--green-bg); color: var(--green); }
   .data-status.demo { background: var(--draw-bg); color: var(--draw-amber); }
+
+  /* ═══ NAV ═══ */
   .nav {
     background: var(--navy-mid); border-bottom: 1px solid var(--border);
     position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);
   }
   .nav-inner {
     max-width: 1320px; margin: 0 auto; padding: 0 2rem;
-    display: flex; gap: 0; overflow-x: auto;
-    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
   }
   .nav-inner::-webkit-scrollbar { display: none; }
   .nav-btn {
@@ -117,39 +117,95 @@
   }
   .nav-btn:hover { color: var(--text-secondary); }
   .nav-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ═══ MAIN ═══ */
   .main {
     max-width: 1320px; margin: 0 auto; padding: 1.75rem 2rem 3rem;
     position: relative; z-index: 1;
   }
   .panel { display: none; }
-  .panel.active { display: block; animation: panelIn 0.35s ease; }
-  @keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .panel.active { display: block; }
+
+  /* ═══ SECTION HEADER ═══ */
   .sec-header {
     display: flex; align-items: baseline; justify-content: space-between;
     flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;
     padding-bottom: 1rem; border-bottom: 1px solid var(--border);
   }
-  .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 1.5px; }
-  .week-nav { display: flex; align-items: center; gap: 0.5rem; }
-  .week-nav-btn {
-    width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border);
-    background: var(--navy-mid); color: var(--text-secondary); display: grid;
-    place-items: center; cursor: pointer; font-size: 0.75rem; transition: var(--transition);
+  .sec-title {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+    color: var(--gold); letter-spacing: 1.5px;
   }
-  .week-nav-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
-  .week-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--text-secondary); min-width: 80px; text-align: center; }
-  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+
+  /* ═══ CAROUSEL ═══ */
+  .carousel-viewport {
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .carousel-slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+  .carousel-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    pointer-events: auto;
+  }
+  .carousel-slide.exit {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  /* Dots / progress */
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+  .carousel-dot {
+    width: 40px; height: 4px;
+    border-radius: 2px;
+    background: var(--navy-surface);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .carousel-dot.active { background: rgba(201,168,76,0.2); }
+  .carousel-dot-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+  }
+  .carousel-dot.active .carousel-dot-fill { width: 0%; }
+
+  .pause-hint {
+    font-size: 0.6rem; color: var(--text-muted);
+    text-align: center; margin-top: 0.5rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .carousel-viewport:hover + .carousel-controls + .pause-hint,
+  .carousel-viewport.paused + .carousel-controls + .pause-hint { opacity: 1; }
+
+  /* ═══ TEAM CARD (single, centered for carousel) ═══ */
+  .t-card-wrap {
+    max-width: 520px;
+    margin: 0 auto;
+  }
   .t-card {
     background: var(--navy-mid); border: 1px solid var(--border);
     border-radius: var(--radius-lg); overflow: hidden;
-    transition: transform var(--transition), box-shadow var(--transition);
-    animation: cardUp 0.4s ease both;
   }
-  .t-card:nth-child(2) { animation-delay: 0.06s; }
-  .t-card:nth-child(3) { animation-delay: 0.12s; }
-  .t-card:nth-child(4) { animation-delay: 0.18s; }
-  @keyframes cardUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-  .t-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.35); border-color: var(--border-hover); }
   .t-card-top {
     padding: 0.9rem 1.15rem; display: flex; align-items: center;
     justify-content: space-between; background: var(--navy-light);
@@ -168,17 +224,20 @@
     background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); font-weight: 500;
   }
   .t-card-body { padding: 1rem 1.15rem; }
-  .potm-row { display: flex; align-items: center; gap: 0.9rem; padding-bottom: 0.9rem; margin-bottom: 0.9rem; border-bottom: 1px solid var(--border); }
+  .potm-row {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding-bottom: 0.9rem; margin-bottom: 0.9rem; border-bottom: 1px solid var(--border);
+  }
   .potm-circle {
-    width: 52px; height: 52px; border-radius: 50%;
+    width: 56px; height: 56px; border-radius: 50%;
     background: linear-gradient(135deg, var(--gold), var(--gold-dim));
     display: grid; place-items: center; flex-shrink: 0;
-    box-shadow: 0 0 16px rgba(201,168,76,0.15);
+    box-shadow: 0 0 20px rgba(201,168,76,0.2);
   }
-  .potm-circle span { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; color: var(--navy); }
+  .potm-circle span { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; color: var(--navy); }
   .potm-meta .potm-tag { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--gold-dim); font-weight: 700; }
-  .potm-meta .potm-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; color: var(--cream); letter-spacing: 0.8px; line-height: 1.1; }
-  .potm-meta .potm-summary { font-size: 0.74rem; color: var(--text-secondary); margin-top: 0.1rem; }
+  .potm-meta .potm-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--cream); letter-spacing: 0.8px; line-height: 1.1; }
+  .potm-meta .potm-summary { font-size: 0.76rem; color: var(--text-secondary); margin-top: 0.1rem; }
   .stat-lines { display: flex; flex-direction: column; gap: 0.4rem; }
   .stat-line {
     display: grid; grid-template-columns: 48px 1fr auto auto;
@@ -193,7 +252,8 @@
   .stat-line .s-fig { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--cream-dim); white-space: nowrap; }
   .stat-line .s-pts { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; color: var(--gold); text-align: right; min-width: 32px; }
   .no-match { padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
-  .no-match .nm-icon { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.4; }
+
+  /* ═══ LEADERBOARD ═══ */
   .lb-tabs { display: flex; gap: 0.4rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
   .lb-btn {
     padding: 0.55rem 1.3rem; font-family: 'Bebas Neue', sans-serif; font-size: 0.8rem;
@@ -203,7 +263,7 @@
   .lb-btn:hover { color: var(--text-secondary); border-color: var(--border-hover); }
   .lb-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
   .lb-panel { display: none; }
-  .lb-panel.active { display: block; animation: panelIn 0.25s ease; }
+  .lb-panel.active { display: block; }
   .lb-table {
     width: 100%; border-collapse: collapse; background: var(--navy-mid);
     border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border);
@@ -227,28 +287,19 @@
   .rank.g3 { color: #cd7f32; }
   .p-name { font-weight: 600; }
   .p-team { font-size: 0.6rem; color: var(--text-muted); font-weight: 400; letter-spacing: 0.5px; margin-left: 0.35rem; }
-  .pts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1rem; }
-  .pts-card { background: var(--navy-mid); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
-  .pts-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 2px; margin-bottom: 0.75rem; padding-bottom: 0.5rem; }
-  .pts-card h3.c-bat { color: var(--blue); border-bottom: 2px solid var(--blue); }
-  .pts-card h3.c-bowl { color: var(--green); border-bottom: 2px solid var(--green); }
-  .pts-card h3.c-field { color: var(--gold); border-bottom: 2px solid var(--gold); }
-  .pts-row { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.78rem; color: var(--text-secondary); }
-  .pts-row span:last-child { font-family: 'IBM Plex Mono', monospace; font-size: 0.73rem; color: var(--cream-dim); }
-  .loading-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
-  .loading-state .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ═══ RESPONSIVE ═══ */
   @media (max-width: 768px) {
     .header-inner { padding: 1.25rem 1rem; }
     .club-text .club-name { font-size: 1.4rem; letter-spacing: 2px; }
     .main { padding: 1.25rem 1rem; }
-    .team-grid { grid-template-columns: 1fr; }
+    .t-card-wrap { max-width: 100%; }
     .nav-btn { padding: 0.75rem 1rem; font-size: 0.8rem; }
     .lb-table thead th, .lb-table tbody td { padding: 0.55rem 0.5rem; }
     .stat-line { grid-template-columns: 40px 1fr auto; }
     .stat-line .s-fig { display: none; }
   }
-  @media (max-width: 480px) { .header-right { display: none; } .pts-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .header-right { display: none; } }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--navy); }
   ::-webkit-scrollbar-thumb { background: var(--navy-surface); border-radius: 3px; }
@@ -258,7 +309,7 @@
 <div class="header">
   <div class="header-inner">
     <div class="club-identity">
-      <div class="club-crest">HTCC</div>
+      <div class="club-crest"><img src="club-crest.png" alt="Harrow Town CC"></div>
       <div class="club-text">
         <div class="club-name">Harrow Town CC</div>
         <div class="club-sub">Senior Men's Dashboard</div>
@@ -275,71 +326,36 @@
   <div class="nav-inner">
     <button class="nav-btn active" data-panel="potw">Performance of the Week</button>
     <button class="nav-btn" data-panel="leaderboard">Season Leaderboards</button>
-    <button class="nav-btn" data-panel="points">Points System</button>
   </div>
 </nav>
 <main class="main">
+  <!-- POTW panel -->
   <div class="panel active" id="panel-potw">
     <div class="sec-header">
       <div class="sec-title" id="potw-title">Loading...</div>
-      <div class="week-nav">
-        <button class="week-nav-btn" id="week-prev" title="Previous week">&#9664;</button>
-        <span class="week-label" id="week-label"></span>
-        <button class="week-nav-btn" id="week-next" title="Next week">&#9654;</button>
-      </div>
     </div>
-    <div class="team-grid" id="team-grid">
-      <div class="loading-state"><div class="spinner"></div>Loading match data...</div>
-    </div>
+    <div class="carousel-viewport" id="potw-carousel"></div>
+    <div class="carousel-controls" id="potw-dots"></div>
+    <div class="pause-hint" id="pause-hint">Hover to pause</div>
   </div>
+  <!-- Leaderboard panel -->
   <div class="panel" id="panel-leaderboard">
     <div class="sec-header"><div class="sec-title">Season Leaderboards — All Senior Teams</div></div>
-    <div class="lb-tabs">
-      <button class="lb-btn active" data-lb="bat">Batting</button>
-      <button class="lb-btn" data-lb="bowl">Bowling</button>
-      <button class="lb-btn" data-lb="field">Fielding</button>
-      <button class="lb-btn" data-lb="overall">Overall POTM</button>
-    </div>
-    <div id="lb-container"></div>
-  </div>
-  <div class="panel" id="panel-points">
-    <div class="sec-header"><div class="sec-title">POTM Points System</div></div>
-    <div class="pts-grid">
-      <div class="pts-card"><h3 class="c-bat">Batting</h3>
-        <div class="pts-row"><span>Per run scored</span><span>+1</span></div>
-        <div class="pts-row"><span>Per four</span><span>+1</span></div>
-        <div class="pts-row"><span>Per six</span><span>+2</span></div>
-        <div class="pts-row"><span>Reaching 25</span><span>+5</span></div>
-        <div class="pts-row"><span>Reaching 50</span><span>+10</span></div>
-        <div class="pts-row"><span>Reaching 100</span><span>+25</span></div>
-        <div class="pts-row"><span>Not out</span><span>+5</span></div>
-        <div class="pts-row"><span>Duck</span><span>-3</span></div>
-        <div class="pts-row"><span>SR &ge; 150 (min 10 balls)</span><span>+10</span></div>
-        <div class="pts-row"><span>SR &ge; 100 (min 10 balls)</span><span>+5</span></div>
-        <div class="pts-row"><span>SR &lt; 50 (min 10 balls)</span><span>-5</span></div>
-      </div>
-      <div class="pts-card"><h3 class="c-bowl">Bowling</h3>
-        <div class="pts-row"><span>Per wicket</span><span>+20</span></div>
-        <div class="pts-row"><span>3-wicket haul bonus</span><span>+5</span></div>
-        <div class="pts-row"><span>5-wicket haul bonus</span><span>+20</span></div>
-        <div class="pts-row"><span>Per maiden</span><span>+3</span></div>
-        <div class="pts-row"><span>Economy &lt; 4 (min 4 ov)</span><span>+15</span></div>
-        <div class="pts-row"><span>Economy &lt; 5 (min 4 ov)</span><span>+10</span></div>
-        <div class="pts-row"><span>Economy &lt; 6 (min 4 ov)</span><span>+5</span></div>
-        <div class="pts-row"><span>Economy &ge; 10 (min 4 ov)</span><span>-5</span></div>
-      </div>
-      <div class="pts-card"><h3 class="c-field">Fielding</h3>
-        <div class="pts-row"><span>Catch</span><span>+10</span></div>
-        <div class="pts-row"><span>Run out</span><span>+10</span></div>
-        <div class="pts-row"><span>Stumping</span><span>+12</span></div>
-      </div>
-    </div>
+    <div class="lb-tabs" id="lb-tabs-container"></div>
+    <div class="carousel-viewport" id="lb-carousel"></div>
+    <div class="carousel-controls" id="lb-dots"></div>
   </div>
 </main>
 <script>
 const TEAM_ORDER=["1st XI","2nd XI","3rd XI","4th XI"];
+const SLIDE_MS=6000;
+const LB_CATEGORIES=[
+  {id:'bat',label:'Batting',cols:[{k:'innings',l:'Inn',c:'r'},{k:'runs',l:'Runs',c:'r'},{k:'avg',l:'Avg',c:'r'},{k:'hs',l:'HS',c:'r'},{k:'fifties',l:'50s',c:'r'},{k:'hundreds',l:'100s',c:'r'}],pk:'pts'},
+  {id:'bowl',label:'Bowling',cols:[{k:'overs',l:'Ov',c:'r'},{k:'wickets',l:'Wkts',c:'r'},{k:'avg',l:'Avg',c:'r'},{k:'economy',l:'Econ',c:'r'},{k:'best',l:'BF',c:'r'}],pk:'pts'},
+  {id:'field',label:'Fielding',cols:[{k:'catches',l:'Ct',c:'r'},{k:'run_outs',l:'RO',c:'r'},{k:'stumpings',l:'St',c:'r'},{k:'total',l:'Total',c:'r'}],pk:'pts'},
+  {id:'overall',label:'Overall POTM',cols:[{k:'batting_pts',l:'Bat',c:'r'},{k:'bowling_pts',l:'Bowl',c:'r'},{k:'fielding_pts',l:'Field',c:'r'}],pk:'total_pts'},
+];
 
-// Demo data uses real Harrow Town CC captain names from Middlesex CCL
 const DEMO={updated:new Date().toISOString(),season:2026,matchweek:12,matchweek_date:"28/06/2026",
 weekly_performances:[
 {team:"1st XI",opponent:"Ealing CC",result:"Harrow Town CC won by 5 wickets",won:true,date:"28/06/2026",
@@ -364,77 +380,179 @@ players:{"Jebin Rajamony":{batting_pts:78,bowling_pts:20,fielding_pts:20,total_p
 potm_winner:{name:"Jebin Rajamony",total_pts:118},best_batter:{name:"Jebin Rajamony",pts:78},best_bowler:{name:"Ryan O'Brien",pts:56},best_fielder:{name:"Sam Wickham",pts:22}},
 ],
 leaderboards:{
-batting:[
-{name:"Devak Bakhai",team:"2nd XI",innings:11,runs:487,avg:48.7,hs:"104*",fifties:3,hundreds:1,pts:612},
-{name:"Aravinth Nagarajan",team:"1st XI",innings:12,runs:463,avg:42.1,hs:"89",fifties:4,hundreds:0,pts:578},
-{name:"Jebin Rajamony",team:"4th XI",innings:10,runs:398,avg:49.8,hs:"82*",fifties:4,hundreds:0,pts:510},
-{name:"Nadeem Dandool",team:"3rd XI",innings:11,runs:372,avg:33.8,hs:"71",fifties:3,hundreds:0,pts:462},
-{name:"Mohsin Shafi",team:"1st XI",innings:12,runs:351,avg:31.9,hs:"76",fifties:2,hundreds:0,pts:428},
-{name:"Tom Reeves",team:"2nd XI",innings:10,runs:312,avg:34.7,hs:"68",fifties:2,hundreds:0,pts:389},
-{name:"Kiran Sharma",team:"2nd XI",innings:11,runs:298,avg:29.8,hs:"55",fifties:1,hundreds:0,pts:358},
-{name:"Chris Ford",team:"3rd XI",innings:10,runs:267,avg:26.7,hs:"63",fifties:2,hundreds:0,pts:334},
-{name:"Ryan O'Brien",team:"4th XI",innings:9,runs:198,avg:24.8,hs:"44",fifties:0,hundreds:0,pts:218},
-{name:"Marcus Allen",team:"3rd XI",innings:10,runs:176,avg:17.6,hs:"38",fifties:0,hundreds:0,pts:192}],
-bowling:[
-{name:"Mohsin Shafi",team:"1st XI",overs:96,wickets:28,avg:14.2,economy:4.14,best:"5-22",pts:698},
-{name:"Kiran Sharma",team:"2nd XI",overs:88,wickets:24,avg:16.8,economy:4.58,best:"4-19",pts:574},
-{name:"Marcus Allen",team:"3rd XI",overs:72,wickets:21,avg:18.4,economy:5.36,best:"4-28",pts:482},
-{name:"Ryan O'Brien",team:"4th XI",overs:64,wickets:18,avg:17.1,economy:4.81,best:"3-14",pts:418},
-{name:"Aravinth Nagarajan",team:"1st XI",overs:52,wickets:14,avg:19.6,economy:5.27,best:"3-31",pts:324},
-{name:"Jake Williams",team:"1st XI",overs:78,wickets:13,avg:22.3,economy:3.72,best:"3-18",pts:316},
-{name:"Ali Khan",team:"2nd XI",overs:56,wickets:12,avg:21.5,economy:4.61,best:"3-22",pts:286},
-{name:"Ben Harper",team:"3rd XI",overs:48,wickets:11,avg:20.7,economy:4.73,best:"3-25",pts:258},
-{name:"Tom Reeves",team:"2nd XI",overs:34,wickets:8,avg:18.9,economy:4.44,best:"2-11",pts:192},
-{name:"Jebin Rajamony",team:"4th XI",overs:28,wickets:6,avg:22.0,economy:4.71,best:"2-18",pts:144}],
-fielding:[
-{name:"Nadeem Dandool",team:"3rd XI",catches:14,run_outs:3,stumpings:0,total:17,pts:170},
-{name:"Sam Wickham",team:"4th XI",catches:11,run_outs:1,stumpings:4,total:16,pts:168},
-{name:"Tom Reeves",team:"2nd XI",catches:12,run_outs:2,stumpings:0,total:14,pts:140},
-{name:"Chris Ford",team:"3rd XI",catches:10,run_outs:3,stumpings:0,total:13,pts:130},
-{name:"Aravinth Nagarajan",team:"1st XI",catches:9,run_outs:2,stumpings:0,total:11,pts:110},
-{name:"Jake Williams",team:"1st XI",catches:8,run_outs:1,stumpings:0,total:9,pts:90},
-{name:"Ali Khan",team:"2nd XI",catches:6,run_outs:0,stumpings:3,total:9,pts:96},
-{name:"Devak Bakhai",team:"2nd XI",catches:7,run_outs:1,stumpings:0,total:8,pts:80},
-{name:"Kiran Sharma",team:"2nd XI",catches:6,run_outs:1,stumpings:0,total:7,pts:70},
-{name:"Ryan O'Brien",team:"4th XI",catches:5,run_outs:2,stumpings:0,total:7,pts:70}],
-overall:[
-{name:"Aravinth Nagarajan",team:"1st XI",batting_pts:578,bowling_pts:324,fielding_pts:110,total_pts:1012},
-{name:"Mohsin Shafi",team:"1st XI",batting_pts:428,bowling_pts:698,fielding_pts:50,total_pts:1176},
-{name:"Devak Bakhai",team:"2nd XI",batting_pts:612,bowling_pts:82,fielding_pts:80,total_pts:774},
-{name:"Marcus Allen",team:"3rd XI",batting_pts:192,bowling_pts:482,fielding_pts:40,total_pts:714},
-{name:"Jebin Rajamony",team:"4th XI",batting_pts:510,bowling_pts:144,fielding_pts:50,total_pts:704},
-{name:"Kiran Sharma",team:"2nd XI",batting_pts:358,bowling_pts:574,fielding_pts:70,total_pts:1002},
-{name:"Nadeem Dandool",team:"3rd XI",batting_pts:462,bowling_pts:42,fielding_pts:170,total_pts:674},
-{name:"Ryan O'Brien",team:"4th XI",batting_pts:218,bowling_pts:418,fielding_pts:70,total_pts:706},
-{name:"Tom Reeves",team:"2nd XI",batting_pts:389,bowling_pts:192,fielding_pts:140,total_pts:721},
-{name:"Sam Wickham",team:"4th XI",batting_pts:192,bowling_pts:36,fielding_pts:168,total_pts:396}]}};
+batting:[{name:"Devak Bakhai",team:"2nd XI",innings:11,runs:487,avg:48.7,hs:"104*",fifties:3,hundreds:1,pts:612},{name:"Aravinth Nagarajan",team:"1st XI",innings:12,runs:463,avg:42.1,hs:"89",fifties:4,hundreds:0,pts:578},{name:"Jebin Rajamony",team:"4th XI",innings:10,runs:398,avg:49.8,hs:"82*",fifties:4,hundreds:0,pts:510},{name:"Nadeem Dandool",team:"3rd XI",innings:11,runs:372,avg:33.8,hs:"71",fifties:3,hundreds:0,pts:462},{name:"Mohsin Shafi",team:"1st XI",innings:12,runs:351,avg:31.9,hs:"76",fifties:2,hundreds:0,pts:428},{name:"Tom Reeves",team:"2nd XI",innings:10,runs:312,avg:34.7,hs:"68",fifties:2,hundreds:0,pts:389},{name:"Kiran Sharma",team:"2nd XI",innings:11,runs:298,avg:29.8,hs:"55",fifties:1,hundreds:0,pts:358},{name:"Chris Ford",team:"3rd XI",innings:10,runs:267,avg:26.7,hs:"63",fifties:2,hundreds:0,pts:334},{name:"Ryan O'Brien",team:"4th XI",innings:9,runs:198,avg:24.8,hs:"44",fifties:0,hundreds:0,pts:218},{name:"Marcus Allen",team:"3rd XI",innings:10,runs:176,avg:17.6,hs:"38",fifties:0,hundreds:0,pts:192}],
+bowling:[{name:"Mohsin Shafi",team:"1st XI",overs:96,wickets:28,avg:14.2,economy:4.14,best:"5-22",pts:698},{name:"Kiran Sharma",team:"2nd XI",overs:88,wickets:24,avg:16.8,economy:4.58,best:"4-19",pts:574},{name:"Marcus Allen",team:"3rd XI",overs:72,wickets:21,avg:18.4,economy:5.36,best:"4-28",pts:482},{name:"Ryan O'Brien",team:"4th XI",overs:64,wickets:18,avg:17.1,economy:4.81,best:"3-14",pts:418},{name:"Aravinth Nagarajan",team:"1st XI",overs:52,wickets:14,avg:19.6,economy:5.27,best:"3-31",pts:324},{name:"Jake Williams",team:"1st XI",overs:78,wickets:13,avg:22.3,economy:3.72,best:"3-18",pts:316},{name:"Ali Khan",team:"2nd XI",overs:56,wickets:12,avg:21.5,economy:4.61,best:"3-22",pts:286},{name:"Ben Harper",team:"3rd XI",overs:48,wickets:11,avg:20.7,economy:4.73,best:"3-25",pts:258},{name:"Tom Reeves",team:"2nd XI",overs:34,wickets:8,avg:18.9,economy:4.44,best:"2-11",pts:192},{name:"Jebin Rajamony",team:"4th XI",overs:28,wickets:6,avg:22.0,economy:4.71,best:"2-18",pts:144}],
+fielding:[{name:"Nadeem Dandool",team:"3rd XI",catches:14,run_outs:3,stumpings:0,total:17,pts:170},{name:"Sam Wickham",team:"4th XI",catches:11,run_outs:1,stumpings:4,total:16,pts:168},{name:"Tom Reeves",team:"2nd XI",catches:12,run_outs:2,stumpings:0,total:14,pts:140},{name:"Chris Ford",team:"3rd XI",catches:10,run_outs:3,stumpings:0,total:13,pts:130},{name:"Aravinth Nagarajan",team:"1st XI",catches:9,run_outs:2,stumpings:0,total:11,pts:110},{name:"Jake Williams",team:"1st XI",catches:8,run_outs:1,stumpings:0,total:9,pts:90},{name:"Ali Khan",team:"2nd XI",catches:6,run_outs:0,stumpings:3,total:9,pts:96},{name:"Devak Bakhai",team:"2nd XI",catches:7,run_outs:1,stumpings:0,total:8,pts:80},{name:"Kiran Sharma",team:"2nd XI",catches:6,run_outs:1,stumpings:0,total:7,pts:70},{name:"Ryan O'Brien",team:"4th XI",catches:5,run_outs:2,stumpings:0,total:7,pts:70}],
+overall:[{name:"Mohsin Shafi",team:"1st XI",batting_pts:428,bowling_pts:698,fielding_pts:50,total_pts:1176},{name:"Aravinth Nagarajan",team:"1st XI",batting_pts:578,bowling_pts:324,fielding_pts:110,total_pts:1012},{name:"Kiran Sharma",team:"2nd XI",batting_pts:358,bowling_pts:574,fielding_pts:70,total_pts:1002},{name:"Devak Bakhai",team:"2nd XI",batting_pts:612,bowling_pts:82,fielding_pts:80,total_pts:774},{name:"Tom Reeves",team:"2nd XI",batting_pts:389,bowling_pts:192,fielding_pts:140,total_pts:721},{name:"Marcus Allen",team:"3rd XI",batting_pts:192,bowling_pts:482,fielding_pts:40,total_pts:714},{name:"Ryan O'Brien",team:"4th XI",batting_pts:218,bowling_pts:418,fielding_pts:70,total_pts:706},{name:"Jebin Rajamony",team:"4th XI",batting_pts:510,bowling_pts:144,fielding_pts:50,total_pts:704},{name:"Nadeem Dandool",team:"3rd XI",batting_pts:462,bowling_pts:42,fielding_pts:170,total_pts:674},{name:"Sam Wickham",team:"4th XI",batting_pts:192,bowling_pts:36,fielding_pts:168,total_pts:396}]}};
 
 let dashData=null, isLive=false;
 
-async function init(){
-  try{ const r=await fetch('data/dashboard.json'); if(r.ok){dashData=await r.json();isLive=true;}else throw 0; }
-  catch{ dashData=DEMO; isLive=false; }
-  render();
+// ═══ CAROUSEL ENGINE ═══
+class Carousel {
+  constructor(viewportId, dotsId, slides, durationMs=SLIDE_MS) {
+    this.viewport = document.getElementById(viewportId);
+    this.dotsEl = document.getElementById(dotsId);
+    this.slides = slides;
+    this.duration = durationMs;
+    this.current = 0;
+    this.timer = null;
+    this.progressTimer = null;
+    this.paused = false;
+    this.elapsed = 0;
+    this.onComplete = null; // callback when all slides shown once
+
+    this.viewport.innerHTML = slides.map((html, i) =>
+      `<div class="carousel-slide${i===0?' active':''}" data-idx="${i}">${html}</div>`
+    ).join('');
+
+    this.dotsEl.innerHTML = slides.map((_, i) =>
+      `<div class="carousel-dot${i===0?' active':''}" data-idx="${i}"><div class="carousel-dot-fill"></div></div>`
+    ).join('');
+
+    // Pause on hover
+    this.viewport.addEventListener('mouseenter', () => this.pause());
+    this.viewport.addEventListener('mouseleave', () => this.resume());
+    // Click dots to jump
+    this.dotsEl.querySelectorAll('.carousel-dot').forEach(dot => {
+      dot.addEventListener('click', () => this.goTo(+dot.dataset.idx));
+    });
+
+    this.startProgress();
+  }
+
+  pause() { this.paused = true; this.viewport.classList.add('paused'); }
+  resume() { this.paused = false; this.viewport.classList.remove('paused'); }
+
+  startProgress() {
+    this.elapsed = 0;
+    const tick = 50;
+    clearInterval(this.progressTimer);
+    this.progressTimer = setInterval(() => {
+      if (this.paused) return;
+      this.elapsed += tick;
+      const pct = Math.min((this.elapsed / this.duration) * 100, 100);
+      const activeDot = this.dotsEl.querySelector('.carousel-dot.active .carousel-dot-fill');
+      if (activeDot) activeDot.style.width = pct + '%';
+      if (this.elapsed >= this.duration) {
+        this.elapsed = 0;
+        this.next();
+      }
+    }, tick);
+  }
+
+  next() {
+    const prev = this.current;
+    // If we're on the last slide and it's time to advance, fire completion instead of wrapping
+    if (this.current === this.slides.length - 1 && this.onComplete) {
+      this.destroy();
+      this.onComplete();
+      return;
+    }
+    this.current = this.current + 1;
+    this.transition(prev, this.current);
+  }
+
+  goTo(idx) {
+    if (idx === this.current) return;
+    const prev = this.current;
+    this.current = idx;
+    this.transition(prev, this.current);
+    this.elapsed = 0;
+  }
+
+  transition(fromIdx, toIdx) {
+    const allSlides = this.viewport.querySelectorAll('.carousel-slide');
+    const allDots = this.dotsEl.querySelectorAll('.carousel-dot');
+    // Reset all dot fills
+    allDots.forEach(d => { d.classList.remove('active'); d.querySelector('.carousel-dot-fill').style.width='0%'; });
+    allDots[toIdx].classList.add('active');
+    // Slide transition
+    allSlides.forEach(s => { s.classList.remove('active','exit'); });
+    allSlides[fromIdx].classList.add('exit');
+    allSlides[toIdx].classList.add('active');
+  }
+
+  destroy() {
+    clearInterval(this.progressTimer);
+    clearTimeout(this.timer);
+  }
 }
 
-function render(){
-  document.getElementById('season-label').textContent=`Season ${dashData.season}`;
-  const d=dashData.updated?new Date(dashData.updated):new Date();
-  document.getElementById('updated-label').textContent=`Updated: ${d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}`;
-  const s=document.getElementById('data-status');
-  s.textContent=isLive?'Live Data':'Demo Data';
-  s.className=`data-status ${isLive?'live':'demo'}`;
-  renderPOTW(); renderLeaderboards();
+// ═══ GLOBAL CAROUSEL ORCHESTRATOR ═══
+let potwCarousel = null;
+let lbCarousel = null;
+let autoPhase = 'potw'; // 'potw' or 'leaderboard'
+
+function switchToPanel(panelId) {
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.panel === panelId);
+  });
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(`panel-${panelId}`).classList.add('active');
 }
 
-function renderPOTW(){
-  const wk=dashData.matchweek||'—', dt=dashData.matchweek_date||'';
-  document.getElementById('potw-title').textContent=`Matchweek ${wk} — ${dt}`;
-  document.getElementById('week-label').textContent=`Week ${wk}`;
-  const g=document.getElementById('team-grid'), ps=dashData.weekly_performances||[];
-  if(!ps.length){g.innerHTML='<div class="no-match"><div class="nm-icon">&#127951;</div>No matches this week</div>';return;}
-  const sorted=[...ps].sort((a,b)=>{const ia=TEAM_ORDER.indexOf(a.team),ib=TEAM_ORDER.indexOf(b.team);return(ia<0?99:ia)-(ib<0?99:ib);});
-  g.innerHTML=sorted.map(m=>{
+function startAutoLoop() {
+  autoPhase = 'potw';
+  switchToPanel('potw');
+
+  if (potwCarousel) potwCarousel.destroy();
+  if (lbCarousel) lbCarousel.destroy();
+
+  // Build POTW carousel
+  const potwSlides = buildPOTWSlides();
+  potwCarousel = new Carousel('potw-carousel', 'potw-dots', potwSlides, SLIDE_MS);
+  potwCarousel.onComplete = () => {
+    // After cycling all POTW slides, switch to leaderboards
+    autoPhase = 'leaderboard';
+    switchToPanel('leaderboard');
+    startLBCarousel();
+  };
+
+  // Build LB carousel (but don't start it yet)
+}
+
+function startLBCarousel() {
+  const lbSlides = buildLBSlides();
+  if (lbCarousel) lbCarousel.destroy();
+  lbCarousel = new Carousel('lb-carousel', 'lb-dots', lbSlides, 8000);
+  // Update tab highlights as LB carousel advances
+  const lbTabBtns = document.querySelectorAll('#lb-tabs-container .lb-btn');
+  const origGoTo = lbCarousel.goTo.bind(lbCarousel);
+  const origNext = lbCarousel.next.bind(lbCarousel);
+  function highlightLBTab(idx) {
+    lbTabBtns.forEach((b,i) => b.classList.toggle('active', i===idx));
+  }
+  highlightLBTab(0);
+  const origTransition = lbCarousel.transition.bind(lbCarousel);
+  lbCarousel.transition = (from, to) => { origTransition(from, to); highlightLBTab(to); };
+  lbCarousel.onComplete = () => {
+    // After cycling all LB categories, go back to POTW
+    autoPhase = 'potw';
+    switchToPanel('potw');
+    if (potwCarousel) potwCarousel.destroy();
+    const potwSlides = buildPOTWSlides();
+    potwCarousel = new Carousel('potw-carousel', 'potw-dots', potwSlides, SLIDE_MS);
+    potwCarousel.onComplete = () => {
+      autoPhase = 'leaderboard';
+      switchToPanel('leaderboard');
+      startLBCarousel();
+    };
+  };
+  // Click LB tabs to jump
+  lbTabBtns.forEach((btn, i) => {
+    btn.addEventListener('click', () => lbCarousel.goTo(i));
+  });
+}
+
+// ═══ BUILD SLIDE HTML ═══
+
+function buildPOTWSlides() {
+  const ps = dashData.weekly_performances || [];
+  const sorted = [...ps].sort((a,b) => {
+    const ia=TEAM_ORDER.indexOf(a.team), ib=TEAM_ORDER.indexOf(b.team);
+    return (ia<0?99:ia)-(ib<0?99:ib);
+  });
+  return sorted.map(m => {
     const rc=m.won?'won':(m.result&&m.result.toLowerCase().includes('draw')?'draw':'lost');
     const rl=m.won?'Won':(rc==='draw'?'Draw':'Lost');
     const pm=m.potm_winner||{}, pp=m.players?m.players[pm.name]:null;
@@ -446,46 +564,53 @@ function renderPOTW(){
     if(bwp&&bwp.bowling&&bwp.bowling.overs){const o=bwp.bowling;bwf=`${o.overs}-${o.maidens||0}-${o.runs}-${o.wickets}`;}
     const bf3=m.best_fielder||{},bfp=m.players?m.players[bf3.name]:null;let bff='';
     if(bfp&&bfp.fielding){const f=bfp.fielding;const p=[];if(f.catches)p.push(`${f.catches} catch${f.catches>1?'es':''}`);if(f.run_outs)p.push(`${f.run_outs} run out${f.run_outs>1?'s':''}`);if(f.stumpings)p.push(`${f.stumpings} stumping${f.stumpings>1?'s':''}`);bff=p.join(' &middot; ');}
-    return `<div class="t-card"><div class="t-card-top"><span class="t-name">${m.team}</span><span class="t-result ${rc}">${rl}</span></div><div class="t-opponent">vs ${m.opponent}</div><div class="t-card-body"><div class="potm-row"><div class="potm-circle"><span>${pm.total_pts||0}</span></div><div class="potm-meta"><div class="potm-tag">Performance of the Week</div><div class="potm-name">${pm.name||'N/A'}</div><div class="potm-summary">${ps2}</div></div></div><div class="stat-lines"><div class="stat-line bat"><span class="s-cat">Bat</span><span class="s-name">${bb.name||'—'}</span><span class="s-fig">${bf2}</span><span class="s-pts">${bb.pts||0}</span></div><div class="stat-line bowl"><span class="s-cat">Bowl</span><span class="s-name">${bw2.name||'—'}</span><span class="s-fig">${bwf}</span><span class="s-pts">${bw2.pts||0}</span></div><div class="stat-line field"><span class="s-cat">Field</span><span class="s-name">${bf3.name||'—'}</span><span class="s-fig">${bff}</span><span class="s-pts">${bf3.pts||0}</span></div></div></div></div>`;
-  }).join('');
+    return `<div class="t-card-wrap"><div class="t-card"><div class="t-card-top"><span class="t-name">${m.team}</span><span class="t-result ${rc}">${rl}</span></div><div class="t-opponent">vs ${m.opponent}</div><div class="t-card-body"><div class="potm-row"><div class="potm-circle"><span>${pm.total_pts||0}</span></div><div class="potm-meta"><div class="potm-tag">Performance of the Week</div><div class="potm-name">${pm.name||'N/A'}</div><div class="potm-summary">${ps2}</div></div></div><div class="stat-lines"><div class="stat-line bat"><span class="s-cat">Bat</span><span class="s-name">${bb.name||'—'}</span><span class="s-fig">${bf2}</span><span class="s-pts">${bb.pts||0}</span></div><div class="stat-line bowl"><span class="s-cat">Bowl</span><span class="s-name">${bw2.name||'—'}</span><span class="s-fig">${bwf}</span><span class="s-pts">${bw2.pts||0}</span></div><div class="stat-line field"><span class="s-cat">Field</span><span class="s-name">${bf3.name||'—'}</span><span class="s-fig">${bff}</span><span class="s-pts">${bf3.pts||0}</span></div></div></div></div></div>`;
+  });
 }
 
-function renderLeaderboards(){
-  const lb=dashData.leaderboards||{};
-  renderLB('bat',lb.batting||[],[{k:'innings',l:'Inn',c:'r'},{k:'runs',l:'Runs',c:'r'},{k:'avg',l:'Avg',c:'r'},{k:'hs',l:'HS',c:'r'},{k:'fifties',l:'50s',c:'r'},{k:'hundreds',l:'100s',c:'r'}]);
-  renderLB('bowl',lb.bowling||[],[{k:'overs',l:'Ov',c:'r'},{k:'wickets',l:'Wkts',c:'r'},{k:'avg',l:'Avg',c:'r'},{k:'economy',l:'Econ',c:'r'},{k:'best',l:'BF',c:'r'}]);
-  renderLB('field',lb.fielding||[],[{k:'catches',l:'Ct',c:'r'},{k:'run_outs',l:'RO',c:'r'},{k:'stumpings',l:'St',c:'r'},{k:'total',l:'Total',c:'r'}]);
-  renderLB('overall',lb.overall||[],[{k:'batting_pts',l:'Bat',c:'r'},{k:'bowling_pts',l:'Bowl',c:'r'},{k:'fielding_pts',l:'Field',c:'r'}],'total_pts');
+function buildLBSlides() {
+  const lb = dashData.leaderboards || {};
+  const dataMap = { bat: lb.batting||[], bowl: lb.bowling||[], field: lb.fielding||[], overall: lb.overall||[] };
+
+  // Build tab buttons
+  const tabsContainer = document.getElementById('lb-tabs-container');
+  tabsContainer.innerHTML = LB_CATEGORIES.map((cat, i) =>
+    `<button class="lb-btn${i===0?' active':''}" data-idx="${i}">${cat.label}</button>`
+  ).join('');
+
+  return LB_CATEGORIES.map(cat => {
+    const data = [...(dataMap[cat.id]||[])].sort((a,b) => (b[cat.pk]||0)-(a[cat.pk]||0));
+    if (!data.length) return '<div class="no-match">No data yet</div>';
+    const th = cat.cols.map(c => `<th class="${c.c||''}">${c.l}</th>`).join('');
+    const rows = data.slice(0,10).map((r,i) => {
+      const rc = i===0?'g1':i===1?'g2':i===2?'g3':'';
+      const td = cat.cols.map(c => `<td class="${c.c||''}">${r[c.k]??'—'}</td>`).join('');
+      return `<tr><td class="rank ${rc}">${i+1}</td><td class="p-name">${r.name}<span class="p-team">${r.team}</span></td>${td}<td class="pts-col">${(r[cat.pk]||0).toLocaleString()}</td></tr>`;
+    }).join('');
+    return `<table class="lb-table"><thead><tr><th>#</th><th>Player</th>${th}<th class="r">Pts</th></tr></thead><tbody>${rows}</tbody></table>`;
+  });
 }
 
-function renderLB(id,data,cols,pk='pts'){
-  const sorted=[...data].sort((a,b)=>(b[pk]||0)-(a[pk]||0));
-  const c=document.getElementById('lb-container');
-  let p=document.getElementById(`lb-${id}`);
-  if(!p){p=document.createElement('div');p.id=`lb-${id}`;p.className=`lb-panel${id==='bat'?' active':''}`;c.appendChild(p);}
-  if(!sorted.length){p.innerHTML='<div class="no-match"><div class="nm-icon">&#128202;</div>No data yet</div>';return;}
-  const th=cols.map(c=>`<th class="${c.c||''}">${c.l}</th>`).join('');
-  const rows=sorted.slice(0,10).map((r,i)=>{
-    const rc=i===0?'g1':i===1?'g2':i===2?'g3':'';
-    const td=cols.map(c=>`<td class="${c.c||''}">${r[c.k]??'—'}</td>`).join('');
-    return `<tr><td class="rank ${rc}">${i+1}</td><td class="p-name">${r.name}<span class="p-team">${r.team}</span></td>${td}<td class="pts-col">${(r[pk]||0).toLocaleString()}</td></tr>`;
-  }).join('');
-  p.innerHTML=`<table class="lb-table"><thead><tr><th>#</th><th>Player</th>${th}<th class="r">Pts</th></tr></thead><tbody>${rows}</tbody></table>`;
-}
+// ═══ INIT ═══
+async function init() {
+  try { const r = await fetch('data/dashboard.json'); if(r.ok){dashData=await r.json();isLive=true;}else throw 0; }
+  catch { dashData = DEMO; isLive = false; }
 
-// Nav
-document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.nav-btn').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  document.getElementById(`panel-${b.dataset.panel}`).classList.add('active');
-}));
-document.querySelectorAll('.lb-btn').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.lb-btn').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.lb-panel').forEach(x=>x.classList.remove('active'));
-  b.classList.add('active');
-  const p=document.getElementById(`lb-${b.dataset.lb}`);if(p)p.classList.add('active');
-}));
+  document.getElementById('season-label').textContent = `Season ${dashData.season}`;
+  const d = dashData.updated ? new Date(dashData.updated) : new Date();
+  document.getElementById('updated-label').textContent = `Updated: ${d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}`;
+  const s = document.getElementById('data-status');
+  s.textContent = isLive ? 'Live Data' : 'Demo Data';
+  s.className = `data-status ${isLive?'live':'demo'}`;
+  document.getElementById('potw-title').textContent = `Matchweek ${dashData.matchweek||'—'} — ${dashData.matchweek_date||''}`;
+
+  startAutoLoop();
+
+  // Manual nav overrides (pauses auto-advance temporarily)
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchToPanel(btn.dataset.panel));
+  });
+}
 
 init();
 </script>
