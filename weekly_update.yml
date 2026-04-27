@@ -1,14 +1,15 @@
 # .github/workflows/weekly_update.yml
-# Runs every Monday at 7:00 AM UK time, fetches latest results,
-# calculates POTM, and commits updated dashboard data.
+# Runs Monday at 12pm and Tuesday at 7am UK time to catch late scorecard uploads.
+# Fetches latest weekend results, calculates POTM, and commits updated dashboard data.
 
 name: Weekly Dashboard Update
 
 on:
   schedule:
-    # 7:00 AM BST (6:00 AM UTC during British Summer Time)
-    # Adjust to 07:00 UTC during GMT months
-    - cron: '0 6 * * 1'   # Every Monday at 06:00 UTC
+    # Monday 12:00 PM BST (11:00 AM UTC) — primary run
+    - cron: '0 11 * * 1'
+    # Tuesday 7:00 AM BST (6:00 AM UTC) — catch late Sunday uploads
+    - cron: '0 6 * * 2'
 
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
@@ -16,13 +17,16 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-dashboard:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -45,5 +49,5 @@ jobs:
           git config user.name "HTCC Dashboard Bot"
           git config user.email "dashboard@harrowtowncc.co.uk"
           git add data/
-          git diff --staged --quiet || git commit -m "📊 Week $(date +%V) dashboard update - $(date +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "Weekly dashboard update - $(date +%Y-%m-%d)"
           git push
