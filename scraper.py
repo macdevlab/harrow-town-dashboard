@@ -111,17 +111,24 @@ def get_teams():
     """Fetch all teams for the site and return a dict mapping team name -> team_id."""
     data = api_get("teams.json", {"site_id": SITE_ID})
     teams = {}
-    for team in data.get("teams", []):
+    all_teams = data.get("teams", [])
+    logger.info(f"API returned {len(all_teams)} teams for site {SITE_ID}:")
+    for team in all_teams:
         name = team.get("team_name", "")
+        tid = team.get("id", "")
+        logger.info(f"  - '{name}' (ID: {tid})")
         for senior in SENIOR_TEAMS:
             if senior.lower() in name.lower():
-                teams[senior] = str(team["id"])
-                logger.info(f"Found team: {name} -> ID {team['id']}")
+                teams[senior] = str(tid)
+                logger.info(f"    ^ Matched as {senior}")
     return teams
 
 
 def get_matches(season=None, team_id=None, from_date=None, end_date=None):
-    """Fetch match summaries. Returns list of match dicts."""
+    """
+    Fetch all matches (league + friendlies) for a team in a date range.
+    Combines results from result_summary and matches endpoints, deduplicating by ID.
+    """
     params = {"site_id": SITE_ID, "season": season or SEASON}
     if team_id:
         params["team_id"] = team_id
@@ -129,8 +136,34 @@ def get_matches(season=None, team_id=None, from_date=None, end_date=None):
         params["from_match_date"] = from_date
     if end_date:
         params["end_match_date"] = end_date
-    data = api_get("result_summary.json", params)
-    return data.get("result_summary", [])
+
+    all_matches = {}
+
+    # 1. Try result_summary (league matches with results)
+    try:
+        data = api_get("result_summary.json", params)
+        for r in data.get("result_summary", []):
+            mid = r.get("id")
+            if mid:
+                all_matches[str(mid)] = r
+                logger.info(f"    [result_summary] ID:{mid} | {r.get('match_date','')} | {r.get('home_team_name','')} vs {r.get('away_team_name','')} | Status: {r.get('status','')}")
+    except Exception as e:
+        logger.warning(f"  result_summary endpoint failed: {e}")
+
+    # 2. Also try matches endpoint (includes friendlies, pre-season, etc.)
+    try:
+        data2 = api_get("matches.json", params)
+        for m in data2.get("matches", []):
+            mid = m.get("id")
+            if mid and str(mid) not in all_matches:
+                all_matches[str(mid)] = m
+                logger.info(f"    [matches] ID:{mid} | {m.get('match_date','')} | Status: {m.get('status','')}")
+    except Exception as e:
+        logger.warning(f"  matches endpoint failed: {e}")
+
+    results = list(all_matches.values())
+    logger.info(f"  Total unique matches found: {len(results)}")
+    return results
 
 
 def get_match_detail(match_id):
@@ -654,29 +687,37 @@ def run_weekly():
             logger.warning(f"No matches found for {team_label} between {weekend_start} and {weekend_end}")
             continue
 
-        # Take the most recent match
-        match_summary = matches[0]
-        match_id = match_summary.get("id")
+        # Process ALL matches for this team in the weekend (league + friendlies)
+        for match_summary in matches:
+            match_id = match_summary.get("id")
 
-        if not match_id:
-            logger.warning(f"No match ID for {team_label}")
-            continue
+            if not match_id:
+                logger.warning(f"No match ID in match summary for {team_label}")
+                continue
 
-        # Fetch full scorecard
-        match_detail = get_match_detail(match_id)
-        if not match_detail:
-            logger.warning(f"Could not fetch scorecard for match {match_id}")
-            continue
+            logger.info(f"  Fetching scorecard for match {match_id}...")
 
-        # Process and calculate POTM
-        result = process_match(match_detail, team_label)
-        weekly_results.append(result)
+            # Fetch full scorecard
+            match_detail = get_match_detail(match_id)
+            if not match_detail:
+                logger.warning(f"  Could not fetch scorecard for match {match_id}")
+                continue
 
-        # Update season cumulative
-        season_data = update_season_cumulative(season_data, result)
+            # Check if scorecard has actual data
+            innings = match_detail.get("innings", [])
+            if not innings:
+                logger.warning(f"  Match {match_id} has no innings data (scorecard may not be submitted yet)")
+                continue
 
-        logger.info(f"  POTM: {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
-        logger.info(f"  Result: {result['result']}")
+            # Process and calculate POTM
+            result = process_match(match_detail, team_label)
+            weekly_results.append(result)
+
+            # Update season cumulative
+            season_data = update_season_cumulative(season_data, result)
+
+            logger.info(f"  POTM: {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
+            logger.info(f"  Result: {result['result']}")
 
     # Generate leaderboards
     leaderboards = generate_leaderboards(season_data)
@@ -740,7 +781,8 @@ def run_full_season():
             processed_match_ids.add(match_id)
 
             status = match_summary.get("status", "").lower()
-            if status not in ("result", "completed"):
+            if status in ("abandoned", "cancelled", "void"):
+                logger.info(f"  Skipping {match_id} — status: {status}")
                 continue
 
             match_detail = get_match_detail(match_id)
