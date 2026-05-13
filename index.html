@@ -65,15 +65,12 @@
   }
   .club-identity { display: flex; align-items: center; gap: 1.1rem; }
   .club-crest {
-    width: 54px; height: 54px;
-    border-radius: 50%;
-    overflow: hidden;
+    width: 60px; height: 60px;
     flex-shrink: 0;
-    box-shadow: 0 0 20px rgba(201,168,76,0.2);
   }
   .club-crest img {
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
   .club-text .club-name {
     font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem;
@@ -564,7 +561,7 @@ function buildPOTWSlides() {
     if(bwp&&bwp.bowling&&bwp.bowling.overs){const o=bwp.bowling;bwf=`${o.overs}-${o.maidens||0}-${o.runs}-${o.wickets}`;}
     const bf3=m.best_fielder||{},bfp=m.players?m.players[bf3.name]:null;let bff='';
     if(bfp&&bfp.fielding){const f=bfp.fielding;const p=[];if(f.catches)p.push(`${f.catches} catch${f.catches>1?'es':''}`);if(f.run_outs)p.push(`${f.run_outs} run out${f.run_outs>1?'s':''}`);if(f.stumpings)p.push(`${f.stumpings} stumping${f.stumpings>1?'s':''}`);bff=p.join(' &middot; ');}
-    return `<div class="t-card-wrap"><div class="t-card"><div class="t-card-top"><span class="t-name">${m.team}</span><span class="t-result ${rc}">${rl}</span></div><div class="t-opponent">vs ${m.opponent}</div><div class="t-card-body"><div class="potm-row"><div class="potm-circle"><span>${pm.total_pts||0}</span></div><div class="potm-meta"><div class="potm-tag">Performance of the Week</div><div class="potm-name">${pm.name||'N/A'}</div><div class="potm-summary">${ps2}</div></div></div><div class="stat-lines"><div class="stat-line bat"><span class="s-cat">Bat</span><span class="s-name">${bb.name||'—'}</span><span class="s-fig">${bf2}</span><span class="s-pts">${bb.pts||0}</span></div><div class="stat-line bowl"><span class="s-cat">Bowl</span><span class="s-name">${bw2.name||'—'}</span><span class="s-fig">${bwf}</span><span class="s-pts">${bw2.pts||0}</span></div><div class="stat-line field"><span class="s-cat">Field</span><span class="s-name">${bf3.name||'—'}</span><span class="s-fig">${bff}</span><span class="s-pts">${bf3.pts||0}</span></div></div></div></div></div>`;
+    return `<div class="t-card-wrap"><div class="t-card"><div class="t-card-top"><span class="t-name">${m.team}</span><span class="t-result ${rc}">${rl}</span></div><div class="t-opponent">vs ${m.opponent}${m.our_score && m.opp_score ? ` — HTCC ${m.our_score} | ${m.opponent.split(' - ')[0].split(' CC')[0]} ${m.opp_score}` : ''}</div><div class="t-card-body"><div class="potm-row"><div class="potm-circle"><span>${pm.total_pts||0}</span></div><div class="potm-meta"><div class="potm-tag">Performance of the Week</div><div class="potm-name">${pm.name||'N/A'}</div><div class="potm-summary">${ps2}</div></div></div><div class="stat-lines"><div class="stat-line bat"><span class="s-cat">Bat</span><span class="s-name">${bb.name||'—'}</span><span class="s-fig">${bf2}</span><span class="s-pts">${bb.pts||0}</span></div><div class="stat-line bowl"><span class="s-cat">Bowl</span><span class="s-name">${bw2.name||'—'}</span><span class="s-fig">${bwf}</span><span class="s-pts">${bw2.pts||0}</span></div><div class="stat-line field"><span class="s-cat">Field</span><span class="s-name">${bf3.name||'—'}</span><span class="s-fig">${bff}</span><span class="s-pts">${bf3.pts||0}</span></div></div></div></div></div>`;
   });
 }
 
