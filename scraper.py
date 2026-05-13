@@ -732,8 +732,29 @@ def run_weekly():
             logger.warning(f"No matches found for {team_label} between {weekend_start} and {weekend_end}")
             continue
 
-        # Take only the most recent match for this team (by date, descending)
-        matches_sorted = sorted(matches, key=lambda m: m.get("match_date", ""), reverse=True)
+        # The matches.json endpoint may ignore date filters and return all season fixtures.
+        # Filter manually to only include matches within our weekend window.
+        def parse_date(d):
+            try:
+                parts = d.split('/')
+                return datetime(int(parts[2]), int(parts[1]), int(parts[0]))
+            except:
+                return datetime.min
+
+        window_start = parse_date(weekend_start)
+        window_end = parse_date(weekend_end)
+
+        matches_in_window = [
+            m for m in matches
+            if window_start <= parse_date(m.get("match_date", "")) <= window_end
+        ]
+
+        if not matches_in_window:
+            logger.warning(f"No matches in date window for {team_label}")
+            continue
+
+        # Take the most recent match by properly parsed date
+        matches_sorted = sorted(matches_in_window, key=lambda m: parse_date(m.get("match_date", "")), reverse=True)
         match_summary = matches_sorted[0]
         match_id = match_summary.get("id")
 
@@ -741,7 +762,7 @@ def run_weekly():
             logger.warning(f"No match ID in match summary for {team_label}")
             continue
 
-        logger.info(f"  Processing match {match_id} (most recent of {len(matches)} found)...")
+        logger.info(f"  Processing match {match_id} on {match_summary.get('match_date','')} (from {len(matches_in_window)} in window)...")
 
         # Fetch full scorecard
         match_detail = get_match_detail(match_id)
@@ -815,7 +836,17 @@ def run_full_season():
 
     all_results = []
     processed_match_ids = set()
-    latest_date = ""
+    latest_date_parsed = datetime.min
+    latest_date_str = ""
+
+    def parse_date(d):
+        try:
+            parts = d.split('/')
+            return datetime(int(parts[2]), int(parts[1]), int(parts[0]))
+        except:
+            return datetime.min
+
+    today = datetime.now()
 
     for team_label, team_id in teams.items():
         logger.info(f"\nProcessing full season for {team_label}")
@@ -827,6 +858,12 @@ def run_full_season():
                 continue
             processed_match_ids.add(str(match_id))
 
+            # Skip future fixtures
+            match_date_str = match_summary.get("match_date", "")
+            match_date_parsed = parse_date(match_date_str)
+            if match_date_parsed > today:
+                continue
+
             status = match_summary.get("status", "").lower()
             if status in ("abandoned", "cancelled", "void"):
                 logger.info(f"  Skipping {match_id} — status: {status}")
@@ -836,10 +873,10 @@ def run_full_season():
             if not match_detail:
                 continue
 
-            # Skip matches with no innings data (future fixtures)
+            # Skip matches with no innings data
             innings = match_detail.get("innings", [])
             if not innings:
-                logger.info(f"  Skipping {match_id} — no innings data (future fixture or not submitted)")
+                logger.info(f"  Skipping {match_id} — no innings data")
                 continue
 
             result = process_match(match_detail, team_label)
@@ -847,16 +884,17 @@ def run_full_season():
             season_data = update_season_cumulative(season_data, result)
 
             # Track the latest match date
-            if result.get("date", "") > latest_date:
-                latest_date = result["date"]
+            if match_date_parsed > latest_date_parsed:
+                latest_date_parsed = match_date_parsed
+                latest_date_str = match_date_str
 
             logger.info(f"  {team_label} vs {result['opponent']}: POTM {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
 
     leaderboards = generate_leaderboards(season_data)
 
     # Find the most recent week's performances only
-    if all_results and latest_date:
-        weekly_performances = [r for r in all_results if r.get("date") == latest_date]
+    if all_results and latest_date_str:
+        weekly_performances = [r for r in all_results if r.get("date") == latest_date_str]
     else:
         weekly_performances = all_results
 
@@ -868,7 +906,7 @@ def run_full_season():
         "updated": datetime.now().isoformat(),
         "season": SEASON,
         "matchweek": matchweek,
-        "matchweek_date": latest_date,
+        "matchweek_date": latest_date_str,
         "weekly_performances": weekly_performances,
         "leaderboards": leaderboards,
         "points_system": POINTS,
