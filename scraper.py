@@ -471,6 +471,30 @@ def process_match(match_detail, team_label):
 
     match_date = match_detail.get("match_date", "")
 
+    # ── Extract match scores from innings ──
+    our_score = ""
+    opp_score = ""
+    for inn in our_batting_innings:
+        runs = inn.get("runs", inn.get("team_batting_runs", ""))
+        wickets = inn.get("wickets", inn.get("team_batting_wickets", ""))
+        overs = inn.get("overs", "")
+        if runs:
+            our_score = f"{runs}"
+            if wickets and str(wickets) != "10":
+                our_score += f"/{wickets}"
+            if overs:
+                our_score += f" ({overs} ov)"
+    for inn in our_bowling_innings:
+        runs = inn.get("runs", inn.get("team_batting_runs", ""))
+        wickets = inn.get("wickets", inn.get("team_batting_wickets", ""))
+        overs = inn.get("overs", "")
+        if runs:
+            opp_score = f"{runs}"
+            if wickets and str(wickets) != "10":
+                opp_score += f"/{wickets}"
+            if overs:
+                opp_score += f" ({overs} ov)"
+
     # Determine if won or lost
     result_lower = result.lower()
     won = "harrow town" in result_lower and "won" in result_lower
@@ -484,6 +508,8 @@ def process_match(match_detail, team_label):
         "result": result,
         "won": won,
         "date": match_date,
+        "our_score": our_score,
+        "opp_score": opp_score,
         "players": players,
         "potm_winner": {"name": potm["name"], "total_pts": potm.get("total_pts", 0)},
         "best_batter": {"name": best_bat["name"], "pts": best_bat.get("batting_pts", 0)},
@@ -706,37 +732,38 @@ def run_weekly():
             logger.warning(f"No matches found for {team_label} between {weekend_start} and {weekend_end}")
             continue
 
-        # Process ALL matches for this team in the weekend (league + friendlies)
-        for match_summary in matches:
-            match_id = match_summary.get("id")
+        # Take only the most recent match for this team (by date, descending)
+        matches_sorted = sorted(matches, key=lambda m: m.get("match_date", ""), reverse=True)
+        match_summary = matches_sorted[0]
+        match_id = match_summary.get("id")
 
-            if not match_id:
-                logger.warning(f"No match ID in match summary for {team_label}")
-                continue
+        if not match_id:
+            logger.warning(f"No match ID in match summary for {team_label}")
+            continue
 
-            logger.info(f"  Fetching scorecard for match {match_id}...")
+        logger.info(f"  Processing match {match_id} (most recent of {len(matches)} found)...")
 
-            # Fetch full scorecard
-            match_detail = get_match_detail(match_id)
-            if not match_detail:
-                logger.warning(f"  Could not fetch scorecard for match {match_id}")
-                continue
+        # Fetch full scorecard
+        match_detail = get_match_detail(match_id)
+        if not match_detail:
+            logger.warning(f"  Could not fetch scorecard for match {match_id}")
+            continue
 
-            # Check if scorecard has actual data
-            innings = match_detail.get("innings", [])
-            if not innings:
-                logger.warning(f"  Match {match_id} has no innings data (scorecard may not be submitted yet)")
-                continue
+        # Check if scorecard has actual data
+        innings = match_detail.get("innings", [])
+        if not innings:
+            logger.warning(f"  Match {match_id} has no innings data (scorecard may not be submitted yet)")
+            continue
 
-            # Process and calculate POTM
-            result = process_match(match_detail, team_label)
-            weekly_results.append(result)
+        # Process and calculate POTM
+        result = process_match(match_detail, team_label)
+        weekly_results.append(result)
 
-            # Update season cumulative
-            season_data = update_season_cumulative(season_data, result)
+        # Update season cumulative
+        season_data = update_season_cumulative(season_data, result)
 
-            logger.info(f"  POTM: {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
-            logger.info(f"  Result: {result['result']}")
+        logger.info(f"  POTM: {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
+        logger.info(f"  Result: {result['result']}")
 
     # Generate leaderboards
     leaderboards = generate_leaderboards(season_data)
