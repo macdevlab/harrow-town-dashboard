@@ -804,7 +804,7 @@ def run_weekly():
 
 
 def run_full_season():
-    """Rebuild all season data by processing every match."""
+    """Rebuild all season data by processing every completed match."""
     os.makedirs(DATA_DIR, exist_ok=True)
     season_data = {}
 
@@ -813,8 +813,9 @@ def run_full_season():
         logger.error("No teams found!")
         sys.exit(1)
 
-    all_weekly = []
+    all_results = []
     processed_match_ids = set()
+    latest_date = ""
 
     for team_label, team_id in teams.items():
         logger.info(f"\nProcessing full season for {team_label}")
@@ -822,9 +823,9 @@ def run_full_season():
 
         for match_summary in matches:
             match_id = match_summary.get("id")
-            if not match_id or match_id in processed_match_ids:
+            if not match_id or str(match_id) in processed_match_ids:
                 continue
-            processed_match_ids.add(match_id)
+            processed_match_ids.add(str(match_id))
 
             status = match_summary.get("status", "").lower()
             if status in ("abandoned", "cancelled", "void"):
@@ -835,19 +836,40 @@ def run_full_season():
             if not match_detail:
                 continue
 
+            # Skip matches with no innings data (future fixtures)
+            innings = match_detail.get("innings", [])
+            if not innings:
+                logger.info(f"  Skipping {match_id} — no innings data (future fixture or not submitted)")
+                continue
+
             result = process_match(match_detail, team_label)
-            all_weekly.append(result)
+            all_results.append(result)
             season_data = update_season_cumulative(season_data, result)
 
-            logger.info(f"  {team_label} vs {result['opponent']}: POTM {result['potm_winner']['name']}")
+            # Track the latest match date
+            if result.get("date", "") > latest_date:
+                latest_date = result["date"]
+
+            logger.info(f"  {team_label} vs {result['opponent']}: POTM {result['potm_winner']['name']} ({result['potm_winner']['total_pts']} pts)")
 
     leaderboards = generate_leaderboards(season_data)
+
+    # Find the most recent week's performances only
+    if all_results and latest_date:
+        weekly_performances = [r for r in all_results if r.get("date") == latest_date]
+    else:
+        weekly_performances = all_results
+
+    # Calculate matchweek (number of unique match dates)
+    unique_dates = set(r.get("date", "") for r in all_results if r.get("date"))
+    matchweek = len(unique_dates)
 
     dashboard = {
         "updated": datetime.now().isoformat(),
         "season": SEASON,
-        "matchweek": len(all_weekly) // len(teams),
-        "all_results": all_weekly,
+        "matchweek": matchweek,
+        "matchweek_date": latest_date,
+        "weekly_performances": weekly_performances,
         "leaderboards": leaderboards,
         "points_system": POINTS,
     }
@@ -857,7 +879,7 @@ def run_full_season():
     with open(DASHBOARD_FILE, "w") as f:
         json.dump(dashboard, f, indent=2, default=str)
 
-    logger.info(f"\nFull season rebuild complete. {len(processed_match_ids)} matches processed.")
+    logger.info(f"\nFull season rebuild complete. {len(all_results)} matches processed across {matchweek} matchweek(s).")
     return dashboard
 
 
