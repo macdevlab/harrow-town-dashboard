@@ -1,29 +1,29 @@
 {
-  "updated": "2026-06-15T11:55:04.938820",
+  "updated": "2026-06-22T11:45:02.093518",
   "season": 2026,
-  "matchweek": 9,
-  "matchweek_date": "13/06/2026",
+  "matchweek": 10,
+  "matchweek_date": "20/06/2026",
   "weekly_performances": [
     {
       "team": "1st XI",
       "opponent": "1st XI",
       "result": "Harrow Town CC - 1st XI - Time - Batting First Won 12pts",
       "won": true,
-      "date": "13/06/2026",
-      "our_score": "106 (31.5 ov)",
-      "opp_score": "60 (22.5 ov)",
+      "date": "20/06/2026",
+      "our_score": "297 (49.5 ov)",
+      "opp_score": "150 (49.2 ov)",
       "players": {
         "Sadiq Ahmadzai": {
-          "batting_pts": -5,
+          "batting_pts": 41,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": -5,
+          "total_pts": 41,
           "batting": {
-            "runs": 0,
-            "balls": 9,
-            "fours": 0,
+            "runs": 27,
+            "balls": 46,
+            "fours": 2,
             "sixes": 0,
-            "how_out": "lbw",
+            "how_out": "ct",
             "position": "1"
           },
           "bowling": {},
@@ -34,282 +34,14 @@
           }
         },
         "Aravinth Nagarajan": {
-          "batting_pts": 53,
-          "bowling_pts": 0,
+          "batting_pts": 14,
+          "bowling_pts": 50,
           "fielding_pts": 0,
-          "total_pts": 53,
+          "total_pts": 64,
           "batting": {
-            "runs": 31,
-            "balls": 40,
-            "fours": 6,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "2"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Joel Biju": {
-          "batting_pts": 22,
-          "bowling_pts": 0,
-          "fielding_pts": 30,
-          "total_pts": 52,
-          "batting": {
-            "runs": 18,
-            "balls": 39,
+            "runs": 10,
+            "balls": 15,
             "fours": 2,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "3"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 2,
-            "run_outs": 1,
-            "stumpings": 0
-          }
-        },
-        "Mohammad Usman": {
-          "batting_pts": -5,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": -5,
-          "batting": {
-            "runs": 0,
-            "balls": 7,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "4"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Prayash Singh": {
-          "batting_pts": 2,
-          "bowling_pts": 5,
-          "fielding_pts": 10,
-          "total_pts": 17,
-          "batting": {
-            "runs": 2,
-            "balls": 8,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "5"
-          },
-          "bowling": {
-            "overs": "6.0",
-            "maidens": 1,
-            "runs": 22,
-            "wickets": 0,
-            "wides": 0,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Jay Patel": {
-          "batting_pts": 12,
-          "bowling_pts": 0,
-          "fielding_pts": 10,
-          "total_pts": 22,
-          "batting": {
-            "runs": 8,
-            "balls": 7,
-            "fours": 0,
-            "sixes": 1,
-            "how_out": "ct",
-            "position": "6"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Krishen Daniel": {
-          "batting_pts": 32,
-          "bowling_pts": 205,
-          "fielding_pts": 10,
-          "total_pts": 247,
-          "batting": {
-            "runs": 24,
-            "balls": 28,
-            "fours": 0,
-            "sixes": 2,
-            "how_out": "b",
-            "position": "7"
-          },
-          "bowling": {
-            "overs": "11.5",
-            "maidens": 4,
-            "runs": 27,
-            "wickets": 6,
-            "wides": 0,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Kishan Patel": {
-          "batting_pts": 20,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 20,
-          "batting": {
-            "runs": 14,
-            "balls": 14,
-            "fours": 1,
-            "sixes": 1,
-            "how_out": "ct",
-            "position": "8"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Bala Narayanaswamy": {
-          "batting_pts": 6,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 6,
-          "batting": {
-            "runs": 6,
-            "balls": 29,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "not out",
-            "position": "9"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Akash Menon": {
-          "batting_pts": 1,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 1,
-          "batting": {
-            "runs": 1,
-            "balls": 2,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "10"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Pratham Shah": {
-          "batting_pts": 1,
-          "bowling_pts": 90,
-          "fielding_pts": 0,
-          "total_pts": 91,
-          "batting": {
-            "runs": 1,
-            "balls": 8,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "11"
-          },
-          "bowling": {
-            "overs": "5.0",
-            "maidens": 1,
-            "runs": 11,
-            "wickets": 3,
-            "wides": 0,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        }
-      },
-      "potm_winner": {
-        "name": "Krishen Daniel",
-        "total_pts": 247
-      },
-      "best_batter": {
-        "name": "Aravinth Nagarajan",
-        "pts": 53
-      },
-      "best_bowler": {
-        "name": "Krishen Daniel",
-        "pts": 205
-      },
-      "best_fielder": {
-        "name": "Joel Biju",
-        "pts": 30
-      }
-    },
-    {
-      "team": "2nd XI",
-      "opponent": "2nd XI",
-      "result": "Finchley CC - 2nd XI - Time - Won 10pts",
-      "won": false,
-      "date": "13/06/2026",
-      "our_score": "94 (33.4 ov)",
-      "opp_score": "95/2 (21 ov)",
-      "players": {
-        "Prithvi Pragallapati": {
-          "batting_pts": 24,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 24,
-          "batting": {
-            "runs": 20,
-            "balls": 65,
-            "fours": 2,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "1"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Mohsin Shafi": {
-          "batting_pts": -5,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": -5,
-          "batting": {
-            "runs": 0,
-            "balls": 3,
-            "fours": 0,
             "sixes": 0,
             "how_out": "ct",
             "position": "2"
@@ -317,114 +49,7 @@
           "bowling": {
             "overs": "4.0",
             "maidens": 0,
-            "runs": 10,
-            "wickets": 0,
-            "wides": 0,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Shenal Daniel": {
-          "batting_pts": 50,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 50,
-          "batting": {
-            "runs": 32,
-            "balls": 58,
-            "fours": 4,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "3"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Mohammad Arshad": {
-          "batting_pts": 11,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 11,
-          "batting": {
-            "runs": 11,
-            "balls": 29,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "4"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Sachin Manoraj": {
-          "batting_pts": -5,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": -5,
-          "batting": {
-            "runs": 0,
-            "balls": 2,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "5"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Tharushka Patabendige": {
-          "batting_pts": 2,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 2,
-          "batting": {
-            "runs": 2,
-            "balls": 15,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "6"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Nitesh Gurjar": {
-          "batting_pts": 19,
-          "bowling_pts": 50,
-          "fielding_pts": 0,
-          "total_pts": 69,
-          "batting": {
-            "runs": 13,
-            "balls": 14,
-            "fours": 3,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "7"
-          },
-          "bowling": {
-            "overs": "10.0",
-            "maidens": 0,
-            "runs": 54,
+            "runs": 9,
             "wickets": 2,
             "wides": 0,
             "no_balls": 0
@@ -435,18 +60,85 @@
             "stumpings": 0
           }
         },
-        "Aryan Sen": {
-          "batting_pts": 6,
+        "Jay Patel": {
+          "batting_pts": 9,
           "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 6,
+          "fielding_pts": 10,
+          "total_pts": 19,
           "batting": {
-            "runs": 4,
-            "balls": 4,
+            "runs": 7,
+            "balls": 9,
             "fours": 1,
             "sixes": 0,
+            "how_out": "ct",
+            "position": "3"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Kishan Patel": {
+          "batting_pts": 62,
+          "bowling_pts": 0,
+          "fielding_pts": 30,
+          "total_pts": 92,
+          "batting": {
+            "runs": 36,
+            "balls": 33,
+            "fours": 6,
+            "sixes": 1,
             "how_out": "b",
-            "position": "8"
+            "position": "4"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 3,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Prayash Singh": {
+          "batting_pts": 220,
+          "bowling_pts": 120,
+          "fielding_pts": 0,
+          "total_pts": 340,
+          "batting": {
+            "runs": 112,
+            "balls": 84,
+            "fours": 15,
+            "sixes": 2,
+            "how_out": "b",
+            "position": "5"
+          },
+          "bowling": {
+            "overs": "12.0",
+            "maidens": 7,
+            "runs": 27,
+            "wickets": 3,
+            "wides": 0,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Joel Biju": {
+          "batting_pts": 48,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 48,
+          "batting": {
+            "runs": 34,
+            "balls": 46,
+            "fours": 2,
+            "sixes": 0,
+            "how_out": "ct",
+            "position": "6"
           },
           "bowling": {},
           "fielding": {
@@ -455,7 +147,7 @@
             "stumpings": 0
           }
         },
-        "Jaimin Patel": {
+        "Armaan Vasisht": {
           "batting_pts": -5,
           "bowling_pts": 0,
           "fielding_pts": 0,
@@ -465,8 +157,243 @@
             "balls": 1,
             "fours": 0,
             "sixes": 0,
+            "how_out": "b",
+            "position": "7"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Krishen Daniel": {
+          "batting_pts": 63,
+          "bowling_pts": 104,
+          "fielding_pts": 10,
+          "total_pts": 177,
+          "batting": {
+            "runs": 41,
+            "balls": 43,
+            "fours": 4,
+            "sixes": 1,
+            "how_out": "ct",
+            "position": "8"
+          },
+          "bowling": {
+            "overs": "21.2",
+            "maidens": 4,
+            "runs": 62,
+            "wickets": 3,
+            "wides": 1,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Akash Menon": {
+          "batting_pts": 7,
+          "bowling_pts": 35,
+          "fielding_pts": 0,
+          "total_pts": 42,
+          "batting": {
+            "runs": 5,
+            "balls": 6,
+            "fours": 1,
+            "sixes": 0,
             "how_out": "ct",
             "position": "9"
+          },
+          "bowling": {
+            "overs": "7.0",
+            "maidens": 2,
+            "runs": 38,
+            "wickets": 1,
+            "wides": 0,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Bala Narayanaswamy": {
+          "batting_pts": 1,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 1,
+          "batting": {
+            "runs": 1,
+            "balls": 3,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "lbw",
+            "position": "10"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Pratham Shah": {
+          "batting_pts": 22,
+          "bowling_pts": 30,
+          "fielding_pts": 10,
+          "total_pts": 62,
+          "batting": {
+            "runs": 16,
+            "balls": 13,
+            "fours": 3,
+            "sixes": 0,
+            "how_out": "not out",
+            "position": "11"
+          },
+          "bowling": {
+            "overs": "5.0",
+            "maidens": 1,
+            "runs": 7,
+            "wickets": 1,
+            "wides": 0,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        }
+      },
+      "potm_winner": {
+        "name": "Prayash Singh",
+        "total_pts": 340
+      },
+      "best_batter": {
+        "name": "Prayash Singh",
+        "pts": 220
+      },
+      "best_bowler": {
+        "name": "Prayash Singh",
+        "pts": 120
+      },
+      "best_fielder": {
+        "name": "Kishan Patel",
+        "pts": 30
+      }
+    },
+    {
+      "team": "2nd XI",
+      "opponent": "2nd XI",
+      "result": "Harrow Town CC - 2nd XI - Time - Won 10pts",
+      "won": true,
+      "date": "20/06/2026",
+      "our_score": "114/3 (23.4 ov)",
+      "opp_score": "110 (39.3 ov)",
+      "players": {
+        "Mark Jadunath": {
+          "batting_pts": -5,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": -5,
+          "batting": {
+            "runs": 0,
+            "balls": 4,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "lbw",
+            "position": "1"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Mohsin Shafi": {
+          "batting_pts": 2,
+          "bowling_pts": 45,
+          "fielding_pts": 0,
+          "total_pts": 47,
+          "batting": {
+            "runs": 2,
+            "balls": 6,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "b",
+            "position": "2"
+          },
+          "bowling": {
+            "overs": "8",
+            "maidens": 4,
+            "runs": 12,
+            "wickets": 1,
+            "wides": 0,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Pavan Poddaturi": {
+          "batting_pts": -5,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": -5,
+          "batting": {
+            "runs": 0,
+            "balls": 2,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "b",
+            "position": "3"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Mohammad Usman": {
+          "batting_pts": 116,
+          "bowling_pts": 0,
+          "fielding_pts": 10,
+          "total_pts": 126,
+          "batting": {
+            "runs": 59,
+            "balls": 65,
+            "fours": 9,
+            "sixes": 1,
+            "how_out": "not out",
+            "position": "4"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Shenal Daniel": {
+          "batting_pts": 104,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 104,
+          "batting": {
+            "runs": 51,
+            "balls": 66,
+            "fours": 7,
+            "sixes": 1,
+            "how_out": "not out",
+            "position": "5"
           },
           "bowling": {},
           "fielding": {
@@ -476,23 +403,16 @@
           }
         },
         "Devam Patel": {
-          "batting_pts": 2,
-          "bowling_pts": 0,
+          "batting_pts": 0,
+          "bowling_pts": 30,
           "fielding_pts": 0,
-          "total_pts": 2,
-          "batting": {
-            "runs": 2,
-            "balls": 6,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "lbw",
-            "position": "10"
-          },
+          "total_pts": 30,
+          "batting": {},
           "bowling": {
-            "overs": "4.0",
-            "maidens": 0,
-            "runs": 17,
-            "wickets": 0,
+            "overs": "5",
+            "maidens": 1,
+            "runs": 22,
+            "wickets": 1,
             "wides": 0,
             "no_balls": 0
           },
@@ -502,29 +422,88 @@
             "stumpings": 0
           }
         },
+        "Nitesh Gurjar": {
+          "batting_pts": 0,
+          "bowling_pts": 175,
+          "fielding_pts": 10,
+          "total_pts": 185,
+          "batting": {},
+          "bowling": {
+            "overs": "14",
+            "maidens": 3,
+            "runs": 29,
+            "wickets": 5,
+            "wides": 0,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Naveen Sarma": {
+          "batting_pts": 0,
+          "bowling_pts": 4,
+          "fielding_pts": 10,
+          "total_pts": 14,
+          "batting": {},
+          "bowling": {
+            "overs": "7",
+            "maidens": 1,
+            "runs": 17,
+            "wickets": 0,
+            "wides": 1,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
         "Samiullah Khyber": {
           "batting_pts": 0,
-          "bowling_pts": 5,
+          "bowling_pts": 85,
           "fielding_pts": 0,
-          "total_pts": 5,
-          "batting": {
-            "runs": 0,
-            "balls": 5,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "not out",
-            "position": "11"
-          },
+          "total_pts": 85,
+          "batting": {},
           "bowling": {
-            "overs": "3.0",
-            "maidens": 1,
-            "runs": 12,
-            "wickets": 0,
+            "overs": "5.3",
+            "maidens": 0,
+            "runs": 21,
+            "wickets": 3,
             "wides": 0,
             "no_balls": 0
           },
           "fielding": {
             "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Prithvi Pragallapati": {
+          "batting_pts": 0,
+          "bowling_pts": 0,
+          "fielding_pts": 10,
+          "total_pts": 10,
+          "batting": {},
+          "bowling": {},
+          "fielding": {
+            "catches": 1,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Mohammad Arshad": {
+          "batting_pts": 0,
+          "bowling_pts": 0,
+          "fielding_pts": 20,
+          "total_pts": 20,
+          "batting": {},
+          "bowling": {},
+          "fielding": {
+            "catches": 2,
             "run_outs": 0,
             "stumpings": 0
           }
@@ -532,19 +511,19 @@
       },
       "potm_winner": {
         "name": "Nitesh Gurjar",
-        "total_pts": 69
+        "total_pts": 185
       },
       "best_batter": {
-        "name": "Shenal Daniel",
-        "pts": 50
+        "name": "Mohammad Usman",
+        "pts": 116
       },
       "best_bowler": {
         "name": "Nitesh Gurjar",
-        "pts": 50
+        "pts": 175
       },
       "best_fielder": {
-        "name": "Prithvi Pragallapati",
-        "pts": 0
+        "name": "Mohammad Arshad",
+        "pts": 20
       }
     },
     {
@@ -552,30 +531,30 @@
       "opponent": "3rd XI",
       "result": "Harrow Town CC - 3rd XI - Time - Batting First Won 12pts",
       "won": true,
-      "date": "13/06/2026",
-      "our_score": "246 (46.3 ov)",
-      "opp_score": "96 (27.3 ov)",
+      "date": "20/06/2026",
+      "our_score": "173 (41.5 ov)",
+      "opp_score": "54 (25.3 ov)",
       "players": {
         "Chandraprasad Arumugam": {
-          "batting_pts": 210,
-          "bowling_pts": 93,
+          "batting_pts": 105,
+          "bowling_pts": 45,
           "fielding_pts": 0,
-          "total_pts": 303,
+          "total_pts": 150,
           "batting": {
-            "runs": 104,
-            "balls": 100,
-            "fours": 12,
-            "sixes": 3,
-            "how_out": "b",
+            "runs": 51,
+            "balls": 42,
+            "fours": 10,
+            "sixes": 1,
+            "how_out": "ct",
             "position": "1"
           },
           "bowling": {
-            "overs": "8.0",
-            "maidens": 2,
-            "runs": 32,
-            "wickets": 3,
+            "overs": "6.0",
+            "maidens": 4,
+            "runs": 15,
+            "wickets": 1,
             "wides": 0,
-            "no_balls": 1
+            "no_balls": 0
           },
           "fielding": {
             "catches": 0,
@@ -583,17 +562,17 @@
             "stumpings": 0
           }
         },
-        "Dhaiwat Darji": {
-          "batting_pts": 6,
+        "Utkarsh Goswami": {
+          "batting_pts": 51,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": 6,
+          "total_pts": 51,
           "batting": {
-            "runs": 6,
-            "balls": 52,
-            "fours": 0,
+            "runs": 35,
+            "balls": 74,
+            "fours": 3,
             "sixes": 0,
-            "how_out": "lbw",
+            "how_out": "b",
             "position": "2"
           },
           "bowling": {},
@@ -603,57 +582,57 @@
             "stumpings": 0
           }
         },
-        "Pavan Poddaturi": {
-          "batting_pts": 15,
+        "Sachin Manoraj": {
+          "batting_pts": 0,
           "bowling_pts": 0,
-          "fielding_pts": 10,
-          "total_pts": 25,
+          "fielding_pts": 0,
+          "total_pts": 0,
           "batting": {
-            "runs": 13,
-            "balls": 23,
-            "fours": 1,
+            "runs": 8,
+            "balls": 26,
+            "fours": 0,
             "sixes": 0,
-            "how_out": "ct",
+            "how_out": "run out",
             "position": "3"
           },
           "bowling": {},
           "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Shivam Nirupam": {
-          "batting_pts": 3,
-          "bowling_pts": 0,
-          "fielding_pts": 10,
-          "total_pts": 13,
-          "batting": {
-            "runs": 3,
-            "balls": 6,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "lbw",
-            "position": "4"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 1,
+            "catches": 0,
             "run_outs": 0,
             "stumpings": 0
           }
         },
         "Preet Bhagat": {
-          "batting_pts": 130,
+          "batting_pts": 16,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": 130,
+          "total_pts": 16,
           "batting": {
-            "runs": 73,
-            "balls": 73,
-            "fours": 9,
-            "sixes": 1,
-            "how_out": "not out",
+            "runs": 12,
+            "balls": 33,
+            "fours": 2,
+            "sixes": 0,
+            "how_out": "b",
+            "position": "4"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Jaimin Patel": {
+          "batting_pts": 4,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 4,
+          "batting": {
+            "runs": 4,
+            "balls": 7,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "ct",
             "position": "5"
           },
           "bowling": {},
@@ -663,38 +642,18 @@
             "stumpings": 0
           }
         },
-        "Kishan Dilipkumar": {
+        "Arya Makwana": {
           "batting_pts": -5,
           "bowling_pts": 0,
           "fielding_pts": 10,
           "total_pts": 5,
           "batting": {
             "runs": 0,
-            "balls": 3,
+            "balls": 5,
             "fours": 0,
             "sixes": 0,
-            "how_out": "b",
+            "how_out": "lbw",
             "position": "6"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 0,
-            "run_outs": 1,
-            "stumpings": 0
-          }
-        },
-        "Will Umuliisa-Jackson": {
-          "batting_pts": -5,
-          "bowling_pts": 0,
-          "fielding_pts": 10,
-          "total_pts": 5,
-          "batting": {
-            "runs": 0,
-            "balls": 2,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "7"
           },
           "bowling": {},
           "fielding": {
@@ -704,17 +663,17 @@
           }
         },
         "Manthan Patel": {
-          "batting_pts": -5,
+          "batting_pts": 44,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": -5,
+          "total_pts": 44,
           "batting": {
-            "runs": 0,
-            "balls": 1,
-            "fours": 0,
-            "sixes": 0,
+            "runs": 26,
+            "balls": 36,
+            "fours": 2,
+            "sixes": 1,
             "how_out": "b",
-            "position": "8"
+            "position": "7"
           },
           "bowling": {},
           "fielding": {
@@ -723,26 +682,73 @@
             "stumpings": 0
           }
         },
-        "Rushab Shah": {
-          "batting_pts": 23,
-          "bowling_pts": 81,
-          "fielding_pts": 0,
-          "total_pts": 104,
+        "Nadeem Dandool": {
+          "batting_pts": 11,
+          "bowling_pts": 35,
+          "fielding_pts": 10,
+          "total_pts": 56,
           "batting": {
-            "runs": 17,
-            "balls": 22,
-            "fours": 3,
+            "runs": 9,
+            "balls": 15,
+            "fours": 1,
             "sixes": 0,
-            "how_out": "ct",
-            "position": "9"
+            "how_out": "b",
+            "position": "8"
           },
           "bowling": {
-            "overs": "5.3",
-            "maidens": 0,
-            "runs": 23,
-            "wickets": 3,
+            "overs": "6.0",
+            "maidens": 2,
+            "runs": 9,
+            "wickets": 1,
             "wides": 0,
-            "no_balls": 2
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 1,
+            "stumpings": 0
+          }
+        },
+        "Rushab Shah": {
+          "batting_pts": -5,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": -5,
+          "batting": {
+            "runs": 0,
+            "balls": 7,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "b",
+            "position": "9"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Anish Vekaria": {
+          "batting_pts": -4,
+          "bowling_pts": 64,
+          "fielding_pts": 0,
+          "total_pts": 60,
+          "batting": {
+            "runs": 4,
+            "balls": 6,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "run out",
+            "position": "10"
+          },
+          "bowling": {
+            "overs": "7.0",
+            "maidens": 3,
+            "runs": 12,
+            "wickets": 2,
+            "wides": 1,
+            "no_balls": 0
           },
           "fielding": {
             "catches": 0,
@@ -751,51 +757,24 @@
           }
         },
         "Rushil Shah": {
-          "batting_pts": 1,
-          "bowling_pts": 95,
-          "fielding_pts": 10,
-          "total_pts": 106,
-          "batting": {
-            "runs": 1,
-            "balls": 3,
-            "fours": 0,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "10"
-          },
-          "bowling": {
-            "overs": "4.0",
-            "maidens": 2,
-            "runs": 3,
-            "wickets": 3,
-            "wides": 0,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Anish Vekaria": {
-          "batting_pts": 2,
-          "bowling_pts": 5,
+          "batting_pts": 0,
+          "bowling_pts": 169,
           "fielding_pts": 0,
-          "total_pts": 7,
+          "total_pts": 169,
           "batting": {
-            "runs": 2,
-            "balls": 2,
+            "runs": 0,
+            "balls": 4,
             "fours": 0,
             "sixes": 0,
-            "how_out": "b",
+            "how_out": "not out",
             "position": "11"
           },
           "bowling": {
-            "overs": "10.0",
-            "maidens": 1,
-            "runs": 28,
-            "wickets": 0,
-            "wides": 0,
+            "overs": "6.3",
+            "maidens": 2,
+            "runs": 12,
+            "wickets": 5,
+            "wides": 1,
             "no_balls": 0
           },
           "fielding": {
@@ -806,42 +785,42 @@
         }
       },
       "potm_winner": {
-        "name": "Chandraprasad Arumugam",
-        "total_pts": 303
+        "name": "Rushil Shah",
+        "total_pts": 169
       },
       "best_batter": {
         "name": "Chandraprasad Arumugam",
-        "pts": 210
+        "pts": 105
       },
       "best_bowler": {
         "name": "Rushil Shah",
-        "pts": 95
+        "pts": 169
       },
       "best_fielder": {
-        "name": "Pavan Poddaturi",
+        "name": "Arya Makwana",
         "pts": 10
       }
     },
     {
       "team": "4th XI",
-      "opponent": "3rd XI",
-      "result": "Old Merchant Taylors CC - 3rd XI - Time - Batting First Won 12pts",
+      "opponent": "4th XI",
+      "result": "West Harrow CC - 3rd XI - Time - Won 10pts",
       "won": false,
-      "date": "13/06/2026",
-      "our_score": "170 (45.4 ov)",
-      "opp_score": "186 (38.3 ov)",
+      "date": "20/06/2026",
+      "our_score": "160 (39.2 ov)",
+      "opp_score": "162/5 (23.3 ov)",
       "players": {
         "Manish Ganatra": {
-          "batting_pts": 28,
+          "batting_pts": 6,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": 28,
+          "total_pts": 6,
           "batting": {
-            "runs": 22,
-            "balls": 30,
-            "fours": 3,
+            "runs": 6,
+            "balls": 33,
+            "fours": 0,
             "sixes": 0,
-            "how_out": "b",
+            "how_out": "ct",
             "position": "1"
           },
           "bowling": {},
@@ -851,92 +830,18 @@
             "stumpings": 0
           }
         },
-        "Yunus Shafi": {
-          "batting_pts": 37,
-          "bowling_pts": 20,
-          "fielding_pts": 10,
-          "total_pts": 67,
-          "batting": {
-            "runs": 25,
-            "balls": 94,
-            "fours": 1,
-            "sixes": 0,
-            "how_out": "b",
-            "position": "2"
-          },
-          "bowling": {
-            "overs": "5.0",
-            "maidens": 0,
-            "runs": 22,
-            "wickets": 1,
-            "wides": 5,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 1,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Utkarsh Goswami": {
+        "Will Umuliisa-Jackson": {
           "batting_pts": -5,
           "bowling_pts": 0,
-          "fielding_pts": 20,
-          "total_pts": 15,
+          "fielding_pts": 0,
+          "total_pts": -5,
           "batting": {
             "runs": 0,
-            "balls": 8,
+            "balls": 2,
             "fours": 0,
             "sixes": 0,
             "how_out": "b",
-            "position": "3"
-          },
-          "bowling": {},
-          "fielding": {
-            "catches": 1,
-            "run_outs": 1,
-            "stumpings": 0
-          }
-        },
-        "Jebin Rajamony": {
-          "batting_pts": 56,
-          "bowling_pts": 5,
-          "fielding_pts": 20,
-          "total_pts": 81,
-          "batting": {
-            "runs": 32,
-            "balls": 37,
-            "fours": 7,
-            "sixes": 0,
-            "how_out": "ct",
-            "position": "4"
-          },
-          "bowling": {
-            "overs": "10.0",
-            "maidens": 0,
-            "runs": 50,
-            "wickets": 1,
-            "wides": 20,
-            "no_balls": 0
-          },
-          "fielding": {
-            "catches": 2,
-            "run_outs": 0,
-            "stumpings": 0
-          }
-        },
-        "Shravan Choudhary": {
-          "batting_pts": 47,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 47,
-          "batting": {
-            "runs": 35,
-            "balls": 45,
-            "fours": 3,
-            "sixes": 1,
-            "how_out": "run out",
-            "position": "5"
+            "position": "2"
           },
           "bowling": {},
           "fielding": {
@@ -946,25 +851,25 @@
           }
         },
         "Shravan Kumar": {
-          "batting_pts": 17,
-          "bowling_pts": 76,
+          "batting_pts": 14,
+          "bowling_pts": -2,
           "fielding_pts": 0,
-          "total_pts": 93,
+          "total_pts": 12,
           "batting": {
-            "runs": 13,
-            "balls": 20,
+            "runs": 10,
+            "balls": 19,
             "fours": 2,
             "sixes": 0,
             "how_out": "b",
-            "position": "6"
+            "position": "3"
           },
           "bowling": {
-            "overs": "6.3",
+            "overs": "1.0",
             "maidens": 0,
-            "runs": 35,
-            "wickets": 3,
-            "wides": 5,
-            "no_balls": 2
+            "runs": 13,
+            "wickets": 0,
+            "wides": 0,
+            "no_balls": 1
           },
           "fielding": {
             "catches": 0,
@@ -972,45 +877,45 @@
             "stumpings": 0
           }
         },
-        "Sagar Goswami": {
-          "batting_pts": 17,
-          "bowling_pts": 87,
-          "fielding_pts": 10,
-          "total_pts": 114,
+        "Michael Jadunath": {
+          "batting_pts": 58,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 58,
           "batting": {
-            "runs": 13,
-            "balls": 20,
+            "runs": 39,
+            "balls": 72,
             "fours": 2,
             "sixes": 0,
-            "how_out": "b",
-            "position": "7"
+            "how_out": "not out",
+            "position": "4"
           },
           "bowling": {
-            "overs": "5.0",
-            "maidens": 1,
-            "runs": 20,
-            "wickets": 3,
-            "wides": 3,
+            "overs": "2.0",
+            "maidens": 0,
+            "runs": 26,
+            "wickets": 0,
+            "wides": 0,
             "no_balls": 0
           },
           "fielding": {
-            "catches": 1,
+            "catches": 0,
             "run_outs": 0,
             "stumpings": 0
           }
         },
-        "Vishal Goswami": {
-          "batting_pts": 1,
+        "Jebin Rajamony": {
+          "batting_pts": 12,
           "bowling_pts": 0,
           "fielding_pts": 0,
-          "total_pts": 1,
+          "total_pts": 12,
           "batting": {
-            "runs": 1,
-            "balls": 4,
+            "runs": 8,
+            "balls": 12,
             "fours": 0,
-            "sixes": 0,
-            "how_out": "lbw",
-            "position": "8"
+            "sixes": 1,
+            "how_out": "ct",
+            "position": "5"
           },
           "bowling": {},
           "fielding": {
@@ -1019,17 +924,91 @@
             "stumpings": 0
           }
         },
-        "MOhit Tanwar": {
-          "batting_pts": 9,
+        "Shravan Choudhary": {
+          "batting_pts": 25,
           "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": 25,
+          "batting": {
+            "runs": 17,
+            "balls": 13,
+            "fours": 4,
+            "sixes": 0,
+            "how_out": "b",
+            "position": "6"
+          },
+          "bowling": {},
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Sagar Goswami": {
+          "batting_pts": 11,
+          "bowling_pts": -2,
           "fielding_pts": 0,
           "total_pts": 9,
           "batting": {
-            "runs": 7,
-            "balls": 15,
+            "runs": 15,
+            "balls": 12,
+            "fours": 2,
+            "sixes": 0,
+            "how_out": "run out",
+            "position": "7"
+          },
+          "bowling": {
+            "overs": "8.0",
+            "maidens": 0,
+            "runs": 47,
+            "wickets": 0,
+            "wides": 2,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Dakshit Asthana": {
+          "batting_pts": 17,
+          "bowling_pts": 162,
+          "fielding_pts": 0,
+          "total_pts": 179,
+          "batting": {
+            "runs": 15,
+            "balls": 29,
             "fours": 1,
             "sixes": 0,
-            "how_out": "not out",
+            "how_out": "st",
+            "position": "8"
+          },
+          "bowling": {
+            "overs": "6.0",
+            "maidens": 1,
+            "runs": 30,
+            "wickets": 5,
+            "wides": 3,
+            "no_balls": 0
+          },
+          "fielding": {
+            "catches": 0,
+            "run_outs": 0,
+            "stumpings": 0
+          }
+        },
+        "Vishal Goswami": {
+          "batting_pts": -5,
+          "bowling_pts": 0,
+          "fielding_pts": 0,
+          "total_pts": -5,
+          "batting": {
+            "runs": 0,
+            "balls": 7,
+            "fours": 0,
+            "sixes": 0,
+            "how_out": "ct",
             "position": "9"
           },
           "bowling": {},
@@ -1039,45 +1018,52 @@
             "stumpings": 0
           }
         },
-        "Tushar Patel": {
-          "batting_pts": 1,
-          "bowling_pts": 0,
-          "fielding_pts": 0,
-          "total_pts": 1,
+        "Prem Savarinathan": {
+          "batting_pts": 3,
+          "bowling_pts": -1,
+          "fielding_pts": 20,
+          "total_pts": 22,
           "batting": {
-            "runs": 1,
-            "balls": 3,
+            "runs": 3,
+            "balls": 16,
             "fours": 0,
             "sixes": 0,
             "how_out": "ct",
             "position": "10"
           },
-          "bowling": {},
+          "bowling": {
+            "overs": "3.0",
+            "maidens": 0,
+            "runs": 10,
+            "wickets": 0,
+            "wides": 1,
+            "no_balls": 0
+          },
           "fielding": {
-            "catches": 0,
+            "catches": 2,
             "run_outs": 0,
             "stumpings": 0
           }
         },
-        "Prem Savarinathan": {
-          "batting_pts": -5,
-          "bowling_pts": 21,
+        "Tushar Patel": {
+          "batting_pts": 26,
+          "bowling_pts": 5,
           "fielding_pts": 10,
-          "total_pts": 26,
+          "total_pts": 41,
           "batting": {
-            "runs": 0,
-            "balls": 4,
-            "fours": 0,
-            "sixes": 0,
+            "runs": 20,
+            "balls": 23,
+            "fours": 1,
+            "sixes": 1,
             "how_out": "ct",
             "position": "11"
           },
           "bowling": {
-            "overs": "12.0",
-            "maidens": 0,
-            "runs": 55,
-            "wickets": 1,
-            "wides": 4,
+            "overs": "3.3",
+            "maidens": 1,
+            "runs": 24,
+            "wickets": 0,
+            "wides": 0,
             "no_balls": 0
           },
           "fielding": {
@@ -1088,19 +1074,19 @@
         }
       },
       "potm_winner": {
-        "name": "Sagar Goswami",
-        "total_pts": 114
+        "name": "Dakshit Asthana",
+        "total_pts": 179
       },
       "best_batter": {
-        "name": "Jebin Rajamony",
-        "pts": 56
+        "name": "Michael Jadunath",
+        "pts": 58
       },
       "best_bowler": {
-        "name": "Sagar Goswami",
-        "pts": 87
+        "name": "Dakshit Asthana",
+        "pts": 162
       },
       "best_fielder": {
-        "name": "Utkarsh Goswami",
+        "name": "Prem Savarinathan",
         "pts": 20
       }
     }
@@ -1110,57 +1096,90 @@
       {
         "name": "Chandraprasad Arumugam",
         "team": "4th XI",
-        "innings": 3,
-        "runs": 144,
-        "avg": 48.0,
+        "innings": 4,
+        "runs": 195,
+        "avg": 48.8,
         "hs": "104",
+        "fifties": 1,
+        "hundreds": 1,
+        "pts": 383
+      },
+      {
+        "name": "Prayash Singh",
+        "team": "1st XI",
+        "innings": 6,
+        "runs": 199,
+        "avg": 33.2,
+        "hs": "112",
         "fifties": 0,
         "hundreds": 1,
-        "pts": 278
+        "pts": 357
       },
       {
         "name": "Shenal Daniel",
         "team": "2nd XI",
-        "innings": 4,
-        "runs": 140,
-        "avg": 46.7,
-        "hs": "42*",
-        "fifties": 0,
-        "hundreds": 0,
-        "pts": 229
-      },
-      {
-        "name": "Manish Ganatra",
-        "team": "4th XI",
         "innings": 5,
-        "runs": 144,
-        "avg": 28.8,
-        "hs": "54",
+        "runs": 191,
+        "avg": 63.7,
+        "hs": "51*",
         "fifties": 1,
         "hundreds": 0,
-        "pts": 229
+        "pts": 333
       },
       {
         "name": "Krishen Daniel",
         "team": "1st XI",
-        "innings": 5,
-        "runs": 136,
-        "avg": 34.0,
+        "innings": 6,
+        "runs": 177,
+        "avg": 35.4,
         "hs": "42",
         "fifties": 0,
         "hundreds": 0,
-        "pts": 209
+        "pts": 272
+      },
+      {
+        "name": "Manish Ganatra",
+        "team": "4th XI",
+        "innings": 6,
+        "runs": 150,
+        "avg": 25.0,
+        "hs": "54",
+        "fifties": 1,
+        "hundreds": 0,
+        "pts": 235
+      },
+      {
+        "name": "Mohammad Usman",
+        "team": "2nd XI",
+        "innings": 4,
+        "runs": 123,
+        "avg": 41.0,
+        "hs": "59*",
+        "fifties": 2,
+        "hundreds": 0,
+        "pts": 225
       },
       {
         "name": "Aravinth Nagarajan",
         "team": "1st XI",
-        "innings": 4,
-        "runs": 126,
-        "avg": 31.5,
+        "innings": 5,
+        "runs": 136,
+        "avg": 27.2,
         "hs": "59",
         "fifties": 1,
         "hundreds": 0,
-        "pts": 208
+        "pts": 222
+      },
+      {
+        "name": "Sadiq Ahmadzai",
+        "team": "1st XI",
+        "innings": 6,
+        "runs": 127,
+        "avg": 21.2,
+        "hs": "55",
+        "fifties": 1,
+        "hundreds": 0,
+        "pts": 216
       },
       {
         "name": "Sahil Patel",
@@ -1174,80 +1193,67 @@
         "pts": 203
       },
       {
-        "name": "Sadiq Ahmadzai",
-        "team": "1st XI",
-        "innings": 5,
-        "runs": 100,
-        "avg": 20.0,
-        "hs": "55",
-        "fifties": 1,
-        "hundreds": 0,
-        "pts": 175
-      },
-      {
         "name": "Preet Bhagat",
         "team": "3rd XI",
-        "innings": 4,
-        "runs": 104,
-        "avg": 34.7,
+        "innings": 5,
+        "runs": 116,
+        "avg": 29.0,
         "hs": "73*",
         "fifties": 1,
         "hundreds": 0,
-        "pts": 173
-      },
-      {
-        "name": "Pavan Poddaturi",
-        "team": "3rd XI",
-        "innings": 4,
-        "runs": 101,
-        "avg": 50.5,
-        "hs": "55",
-        "fifties": 1,
-        "hundreds": 0,
-        "pts": 170
-      },
-      {
-        "name": "Prithvi Pragallapati",
-        "team": "2nd XI",
-        "innings": 4,
-        "runs": 104,
-        "avg": 26.0,
-        "hs": "56",
-        "fifties": 1,
-        "hundreds": 0,
-        "pts": 166
+        "pts": 189
       }
     ],
     "bowling": [
       {
         "name": "Krishen Daniel",
         "team": "1st XI",
-        "overs": 47.8,
-        "wickets": 12,
-        "avg": 9.9,
-        "economy": 2.49,
+        "overs": 69.2,
+        "wickets": 15,
+        "avg": 12.1,
+        "economy": 2.62,
         "best": "6-27",
-        "pts": 404
+        "pts": 508
       },
       {
         "name": "Anish Vekaria",
         "team": "3rd XI",
-        "overs": 62.0,
-        "wickets": 13,
-        "avg": 15.7,
-        "economy": 3.29,
+        "overs": 69.0,
+        "wickets": 15,
+        "avg": 14.4,
+        "economy": 3.13,
         "best": "4-35",
-        "pts": 373
+        "pts": 437
+      },
+      {
+        "name": "Prayash Singh",
+        "team": "1st XI",
+        "overs": 49.7,
+        "wickets": 14,
+        "avg": 13.6,
+        "economy": 3.85,
+        "best": "5-35",
+        "pts": 435
       },
       {
         "name": "Chandraprasad Arumugam",
         "team": "4th XI",
-        "overs": 25.7,
-        "wickets": 11,
-        "avg": 7.7,
-        "economy": 3.31,
+        "overs": 31.7,
+        "wickets": 12,
+        "avg": 8.3,
+        "economy": 3.16,
         "best": "5-16",
-        "pts": 359
+        "pts": 404
+      },
+      {
+        "name": "Devam Patel",
+        "team": "2nd XI",
+        "overs": 41.5,
+        "wickets": 11,
+        "avg": 16.9,
+        "economy": 4.48,
+        "best": "4-21",
+        "pts": 323
       },
       {
         "name": "Arya Makwana",
@@ -1260,64 +1266,44 @@
         "pts": 318
       },
       {
-        "name": "Prayash Singh",
-        "team": "1st XI",
-        "overs": 37.7,
-        "wickets": 11,
-        "avg": 14.9,
-        "economy": 4.35,
-        "best": "5-35",
-        "pts": 315
-      },
-      {
-        "name": "Devam Patel",
-        "team": "2nd XI",
-        "overs": 36.5,
-        "wickets": 10,
-        "avg": 16.4,
-        "economy": 4.49,
-        "best": "4-21",
-        "pts": 293
-      },
-      {
-        "name": "Prem Savarinathan",
+        "name": "Rushil Shah",
         "team": "3rd XI",
-        "overs": 33.0,
+        "overs": 31.5,
         "wickets": 10,
-        "avg": 14.4,
-        "economy": 4.36,
-        "best": "5-27",
-        "pts": 293
+        "avg": 9.8,
+        "economy": 3.11,
+        "best": "5-12",
+        "pts": 310
       },
       {
         "name": "Pratham Shah",
         "team": "1st XI",
-        "overs": 33.0,
-        "wickets": 9,
-        "avg": 13.0,
-        "economy": 3.55,
+        "overs": 38.0,
+        "wickets": 10,
+        "avg": 12.4,
+        "economy": 3.26,
         "best": "4-20",
-        "pts": 268
+        "pts": 298
+      },
+      {
+        "name": "Prem Savarinathan",
+        "team": "3rd XI",
+        "overs": 36.0,
+        "wickets": 10,
+        "avg": 15.4,
+        "economy": 4.28,
+        "best": "5-27",
+        "pts": 292
       },
       {
         "name": "Nadeem Dandool",
         "team": "2nd XI",
-        "overs": 20.8,
-        "wickets": 9,
-        "avg": 14.1,
-        "economy": 6.1,
+        "overs": 26.8,
+        "wickets": 10,
+        "avg": 13.6,
+        "economy": 5.07,
         "best": "4-59",
-        "pts": 241
-      },
-      {
-        "name": "Mohsin Shafi",
-        "team": "2nd XI",
-        "overs": 40.0,
-        "wickets": 7,
-        "avg": 15.9,
-        "economy": 2.77,
-        "best": "3-27",
-        "pts": 214
+        "pts": 276
       }
     ],
     "fielding": [
@@ -1349,10 +1335,55 @@
         "pts": 60
       },
       {
+        "name": "Kishan Patel",
+        "team": "1st XI",
+        "catches": 4,
+        "run_outs": 0,
+        "stumpings": 0,
+        "total": 4,
+        "pts": 40
+      },
+      {
+        "name": "Arya Makwana",
+        "team": "2nd XI",
+        "catches": 4,
+        "run_outs": 0,
+        "stumpings": 0,
+        "total": 4,
+        "pts": 40
+      },
+      {
+        "name": "Prithvi Pragallapati",
+        "team": "2nd XI",
+        "catches": 3,
+        "run_outs": 1,
+        "stumpings": 0,
+        "total": 4,
+        "pts": 40
+      },
+      {
+        "name": "Jay Patel",
+        "team": "1st XI",
+        "catches": 3,
+        "run_outs": 0,
+        "stumpings": 0,
+        "total": 3,
+        "pts": 30
+      },
+      {
         "name": "Prayash Singh",
         "team": "1st XI",
         "catches": 1,
         "run_outs": 2,
+        "stumpings": 0,
+        "total": 3,
+        "pts": 30
+      },
+      {
+        "name": "Krishen Daniel",
+        "team": "1st XI",
+        "catches": 3,
+        "run_outs": 0,
         "stumpings": 0,
         "total": 3,
         "pts": 30
@@ -1365,133 +1396,88 @@
         "stumpings": 0,
         "total": 3,
         "pts": 30
-      },
-      {
-        "name": "Arya Makwana",
-        "team": "2nd XI",
-        "catches": 3,
-        "run_outs": 0,
-        "stumpings": 0,
-        "total": 3,
-        "pts": 30
-      },
-      {
-        "name": "Prithvi Pragallapati",
-        "team": "2nd XI",
-        "catches": 2,
-        "run_outs": 1,
-        "stumpings": 0,
-        "total": 3,
-        "pts": 30
-      },
-      {
-        "name": "Jebin Rajamony",
-        "team": "4th XI",
-        "catches": 3,
-        "run_outs": 0,
-        "stumpings": 0,
-        "total": 3,
-        "pts": 30
-      },
-      {
-        "name": "Aravinth Nagarajan",
-        "team": "1st XI",
-        "catches": 2,
-        "run_outs": 0,
-        "stumpings": 0,
-        "total": 2,
-        "pts": 20
-      },
-      {
-        "name": "Jay Patel",
-        "team": "1st XI",
-        "catches": 2,
-        "run_outs": 0,
-        "stumpings": 0,
-        "total": 2,
-        "pts": 20
       }
     ],
     "overall": [
       {
-        "name": "Chandraprasad Arumugam",
-        "team": "4th XI",
-        "batting_pts": 278,
-        "bowling_pts": 359,
-        "fielding_pts": 10,
-        "total_pts": 647
+        "name": "Prayash Singh",
+        "team": "1st XI",
+        "batting_pts": 357,
+        "bowling_pts": 435,
+        "fielding_pts": 30,
+        "total_pts": 822
       },
       {
         "name": "Krishen Daniel",
         "team": "1st XI",
-        "batting_pts": 209,
-        "bowling_pts": 404,
-        "fielding_pts": 20,
-        "total_pts": 633
+        "batting_pts": 272,
+        "bowling_pts": 508,
+        "fielding_pts": 30,
+        "total_pts": 810
       },
       {
-        "name": "Prayash Singh",
-        "team": "1st XI",
-        "batting_pts": 137,
-        "bowling_pts": 315,
-        "fielding_pts": 30,
-        "total_pts": 482
+        "name": "Chandraprasad Arumugam",
+        "team": "4th XI",
+        "batting_pts": 383,
+        "bowling_pts": 404,
+        "fielding_pts": 10,
+        "total_pts": 797
       },
       {
         "name": "Arya Makwana",
         "team": "2nd XI",
-        "batting_pts": 129,
+        "batting_pts": 124,
         "bowling_pts": 318,
-        "fielding_pts": 30,
-        "total_pts": 477
+        "fielding_pts": 40,
+        "total_pts": 482
       },
       {
         "name": "Anish Vekaria",
         "team": "3rd XI",
-        "batting_pts": 26,
-        "bowling_pts": 373,
+        "batting_pts": 22,
+        "bowling_pts": 437,
         "fielding_pts": 20,
-        "total_pts": 419
-      },
-      {
-        "name": "Prem Savarinathan",
-        "team": "3rd XI",
-        "batting_pts": 63,
-        "bowling_pts": 293,
-        "fielding_pts": 10,
-        "total_pts": 366
+        "total_pts": 479
       },
       {
         "name": "Mohsin Shafi",
         "team": "2nd XI",
-        "batting_pts": 151,
-        "bowling_pts": 214,
+        "batting_pts": 153,
+        "bowling_pts": 259,
         "fielding_pts": 0,
-        "total_pts": 365
+        "total_pts": 412
       },
       {
-        "name": "Sagar Goswami",
-        "team": "4th XI",
-        "batting_pts": 95,
-        "bowling_pts": 203,
-        "fielding_pts": 20,
-        "total_pts": 318
-      },
-      {
-        "name": "Devam Patel",
-        "team": "2nd XI",
-        "batting_pts": 1,
-        "bowling_pts": 293,
-        "fielding_pts": 20,
-        "total_pts": 314
+        "name": "Prem Savarinathan",
+        "team": "3rd XI",
+        "batting_pts": 66,
+        "bowling_pts": 292,
+        "fielding_pts": 30,
+        "total_pts": 388
       },
       {
         "name": "Aravinth Nagarajan",
         "team": "1st XI",
-        "batting_pts": 208,
-        "bowling_pts": 74,
+        "batting_pts": 222,
+        "bowling_pts": 124,
         "fielding_pts": 20,
-        "total_pts": 302
+        "total_pts": 366
+      },
+      {
+        "name": "Nitesh Gurjar",
+        "team": "2nd XI",
+        "batting_pts": 72,
+        "bowling_pts": 273,
+        "fielding_pts": 20,
+        "total_pts": 365
+      },
+      {
+        "name": "Pratham Shah",
+        "team": "1st XI",
+        "batting_pts": 50,
+        "bowling_pts": 298,
+        "fielding_pts": 10,
+        "total_pts": 358
       }
     ]
   },
